@@ -1,0 +1,1002 @@
+<!DOCTYPE html><html lang="zh"><head>
+    <meta charset="utf-8">
+
+<meta name="generator" content="Hexo 4.0.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Python基础知识 - JmeowTechnology</title>
+
+
+    <meta name="description" content="数据类型 1234567891011121314# 除求整数print(2//2)# 除小数print(2/2)# python 表示二进制 在数字后面加 0b# 0b10 表示二进制的10print(0b10)# python 表示八进制 在数字后面加 0o# 0o10 表示八进制的10print(0o10)# python 表示十六进制 在数字后面加 0x# 0x10 表示十六进制的10pri">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础知识">
+<meta property="og:url" content="http://www.jmeow.org/other/python-ji-chu-zhi-shi/index.html">
+<meta property="og:site_name" content="JmeowTechnology">
+<meta property="og:description" content="数据类型 1234567891011121314# 除求整数print(2//2)# 除小数print(2/2)# python 表示二进制 在数字后面加 0b# 0b10 表示二进制的10print(0b10)# python 表示八进制 在数字后面加 0o# 0o10 表示八进制的10print(0o10)# python 表示十六进制 在数字后面加 0x# 0x10 表示十六进制的10pri">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-01T11:13:38.015Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            <!-- Logo 暂时禁用，有Logo再换上 -->
+            <!-- 
+                <img src="/images/logo.svg" alt="Python基础知识" height="28">
+             -->
+                JmeowTechnology
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-01-12T07:01:23.000Z">2018-01-12</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Other/">Other</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1045 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Python基础知识
+            
+        </h1>
+        <div class="content">
+            <h2 id="数据类型">数据类型</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 除求整数</span></span><br><span class="line">print(<span class="number">2</span>//<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 除小数</span></span><br><span class="line">print(<span class="number">2</span>/<span class="number">2</span>)</span><br><span class="line"><span class="comment"># python 表示二进制 在数字后面加 0b</span></span><br><span class="line"><span class="comment"># 0b10 表示二进制的10</span></span><br><span class="line">print(<span class="number">0b10</span>)</span><br><span class="line"><span class="comment"># python 表示八进制 在数字后面加 0o</span></span><br><span class="line"><span class="comment"># 0o10 表示八进制的10</span></span><br><span class="line">print(<span class="number">0o10</span>)</span><br><span class="line"><span class="comment"># python 表示十六进制 在数字后面加 0x</span></span><br><span class="line"><span class="comment"># 0x10 表示十六进制的10</span></span><br><span class="line">print(<span class="number">0x10</span>)</span><br><span class="line">print(<span class="number">0x1F</span>)</span><br></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#=======进制转换=======</span></span><br><span class="line"><span class="comment">#将其他进制数转换为2进制</span></span><br><span class="line">print(bin(<span class="number">10</span>))</span><br><span class="line">print(bin(<span class="number">0o7</span>))</span><br><span class="line">print(bin(<span class="number">0xE</span>))</span><br><span class="line"><span class="comment"># 将其他进制数转换为8进制</span></span><br><span class="line">print(oct(<span class="number">888</span>))</span><br><span class="line">print(oct(<span class="number">0x7777</span>))</span><br><span class="line">print(oct(<span class="number">0b111</span>))</span><br><span class="line"><span class="comment"># 将其他进制数转换为10进制</span></span><br><span class="line">print(int(<span class="number">0b111</span>))</span><br><span class="line">print(int(<span class="number">0o77</span>))</span><br><span class="line">print(int(<span class="number">0x11E</span>))</span><br><span class="line"><span class="comment"># 将其他进制数转换为16进制</span></span><br><span class="line">print(hex(<span class="number">888</span>))</span><br><span class="line">print(hex(<span class="number">0o7777</span>))</span><br><span class="line">print(hex(<span class="number">0b111</span>))</span><br><span class="line"><span class="comment">#bool：类型</span></span><br><span class="line">print(type(<span class="literal">True</span>))</span><br><span class="line">print(type(<span class="literal">False</span>))</span><br><span class="line"><span class="comment"># bool True False</span></span><br><span class="line">print(bool(<span class="string">'abc'</span>))</span><br><span class="line">print(bool(<span class="string">''</span>))</span><br><span class="line">print(bool([]))</span><br><span class="line">print(bool([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]))</span><br><span class="line"><span class="comment"># 表示复数 complex</span></span><br><span class="line">print(<span class="number">36j</span>)</span><br><span class="line"><span class="comment"># 转义字符</span></span><br><span class="line">print(<span class="string">'let\'s go'</span>)</span><br><span class="line"><span class="comment"># 换行</span></span><br><span class="line">print(<span class="string">"""hello\nhello"""</span>)</span><br><span class="line"><span class="comment"># 字符串拼接</span></span><br><span class="line">print(<span class="string">"hello"</span>+<span class="string">"world"</span>)</span><br><span class="line"><span class="comment"># 字符串计算</span></span><br><span class="line">print(<span class="string">"hello"</span> * <span class="number">3</span>)</span><br><span class="line"><span class="comment"># 字符串索引(负数为反向查找)</span></span><br><span class="line">print(<span class="string">"hello"</span>[<span class="number">0</span>])</span><br><span class="line">print(<span class="string">"hello"</span>[<span class="number">3</span>])</span><br><span class="line">print(<span class="string">"hello"</span>[<span class="number">-1</span>])</span><br><span class="line"><span class="comment"># 字符串截取</span></span><br><span class="line">print(<span class="string">"hello world"</span>[<span class="number">0</span>:<span class="number">5</span>])</span><br><span class="line">print(<span class="string">"hello world"</span>[<span class="number">0</span>:<span class="number">-1</span>])</span><br><span class="line">print(<span class="string">"hello world"</span>[<span class="number">6</span>:<span class="number">11</span>])</span><br><span class="line"><span class="comment"># 原始字符串</span></span><br><span class="line">print(<span class="string">r'C:\Windows'</span>)</span><br><span class="line">print(R<span class="string">'C:\Windows'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="数组元组">数组元组</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列表类型 list</span></span><br><span class="line">print(type([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]))</span><br><span class="line">print(type([<span class="string">"AA"</span>,<span class="string">"BB"</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="literal">True</span>,<span class="literal">False</span>]))</span><br><span class="line"><span class="comment"># 二维数组</span></span><br><span class="line">print(type([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]]))</span><br><span class="line"><span class="comment"># 数组操作</span></span><br><span class="line"><span class="comment"># 使用[]来进行操作，取出的会是字符串，使用[:]进行操作，取出的会是数组</span></span><br><span class="line">print([<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>][<span class="number">0</span>])</span><br><span class="line">print([<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>][<span class="number">2</span>])</span><br><span class="line">print([<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>][<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line">print([<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>][<span class="number">-1</span>:])</span><br><span class="line">print([<span class="string">"A"</span>,<span class="string">"B"</span>] * <span class="number">3</span>)</span><br><span class="line"><span class="comment"># 元组</span></span><br><span class="line">print(type((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)))</span><br><span class="line">print(type((<span class="number">1</span>,<span class="number">2</span>,<span class="literal">False</span>)))</span><br><span class="line">print((<span class="number">1</span>,<span class="number">2</span>,<span class="literal">False</span>)[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># int str list</span></span><br><span class="line"><span class="comment"># in</span></span><br><span class="line">print(<span class="number">3</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">print(<span class="number">6</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">print(<span class="number">6</span> <span class="keyword">not</span> <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 长度操作 len</span></span><br><span class="line">print(len(<span class="string">"HELLO !"</span>))</span><br><span class="line"><span class="comment"># 最大最小值 max min</span></span><br><span class="line">print(max([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line">print(min([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line">print(min(<span class="string">"hello"</span>))</span><br><span class="line"><span class="comment"># ASICII码 ord</span></span><br><span class="line">print(ord(<span class="string">'w'</span>))</span><br><span class="line">print(ord(<span class="string">" "</span>))</span><br><span class="line"><span class="comment"># 集合 set 特点：无序，不重复</span></span><br><span class="line">print({<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>})</span><br><span class="line">print({<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>})</span><br><span class="line">print({<span class="number">6</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>})</span><br><span class="line"><span class="comment"># 集合不可通过以下方式操作，因为集合无序</span></span><br><span class="line"><span class="comment"># print({6,2,2,3,4,5}[0])</span></span><br><span class="line">print(len({<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>}))</span><br><span class="line">print(<span class="number">1</span> <span class="keyword">in</span> {<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>})</span><br><span class="line">print(<span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> {<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>})</span><br><span class="line"><span class="comment"># 集合的操作</span></span><br><span class="line"><span class="comment"># 求两个集合的差集</span></span><br><span class="line">print({<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>} - {<span class="number">5</span>,<span class="number">6</span>})</span><br><span class="line"><span class="comment"># 求交集</span></span><br><span class="line">print({<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>} & {<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>})</span><br><span class="line"><span class="comment"># 求并集</span></span><br><span class="line">print({<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>} | {<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>})</span><br><span class="line"><span class="comment"># type</span></span><br><span class="line">print(type({}))</span><br><span class="line">print(type(set()))</span><br><span class="line"><span class="comment"># dict 字典类型 Key Value 不可以有重复key，重复会被覆盖</span></span><br><span class="line"><span class="comment"># {key1:value1, key2:value2}</span></span><br><span class="line">print(type({<span class="string">"AA"</span>:<span class="string">"aa"</span>, <span class="string">"BB"</span>:<span class="string">"bb"</span>}))</span><br><span class="line"><span class="comment"># 寻找dict中key</span></span><br><span class="line">print({<span class="string">"A"</span>:<span class="string">"张"</span>,<span class="string">"B"</span>:<span class="string">"王"</span>,<span class="string">"C"</span>:<span class="string">"李"</span>,<span class="string">"D"</span>:<span class="string">"赵"</span>}[<span class="string">"A"</span>])</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="变量">变量</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">print([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] * <span class="number">3</span> + [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] + [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 变量</span></span><br><span class="line">A = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">B = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print(A * <span class="number">3</span> + B + A)</span><br><span class="line"><span class="comment"># 变量命名规则： 数字，字母，下划线，区分大小写</span></span><br><span class="line"><span class="comment"># 保留关键字： and in if import</span></span><br><span class="line">a_b_c = <span class="number">1</span></span><br><span class="line">d433a = <span class="string">'你好'</span></span><br><span class="line">a_b_c = {<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>}</span><br><span class="line"><span class="comment"># 变量名会覆盖方法名</span></span><br><span class="line"><span class="comment"># type = 1</span></span><br><span class="line"><span class="comment"># print(type)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># int str tuple (不可变)值类型 list set dict(可变) 引用类型</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">a[<span class="number">0</span>] = <span class="string">'1'</span></span><br><span class="line">print(b)</span><br><span class="line"><span class="comment"># 字符串</span></span><br><span class="line">a1 = <span class="string">'Hello'</span></span><br><span class="line">a1 = a1 + <span class="string">'World'</span></span><br><span class="line">print(a1)</span><br><span class="line"><span class="comment"># id 显示内存地址</span></span><br><span class="line">print(hex(id(a1)))</span><br><span class="line">a1 = a1 + <span class="string">'AAS'</span></span><br><span class="line">print(a1)</span><br><span class="line">print(hex(id(a1)))</span><br><span class="line">b1 = <span class="string">"aaa"</span></span><br><span class="line">print(id(b1))</span><br><span class="line">b1 = b1 + <span class="string">"bbb"</span></span><br><span class="line">print(id(b1))</span><br><span class="line"><span class="comment"># 添加元素[]  ,  ()元组不可变</span></span><br><span class="line">A3 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">A3.append(<span class="number">4</span>)</span><br><span class="line">print(A3)</span><br><span class="line"><span class="comment"># 查找元素</span></span><br><span class="line">B1 = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">1</span>,<span class="number">4</span>,<span class="number">5</span>,[<span class="string">'b'</span>,<span class="string">'n'</span>,<span class="string">'m'</span>]])</span><br><span class="line">print(B1[<span class="number">3</span>][<span class="number">3</span>][<span class="number">1</span>])</span><br><span class="line"><span class="comment"># 虽然元组不可变，但是元组中的列表可变</span></span><br><span class="line">B1[<span class="number">3</span>][<span class="number">3</span>][<span class="number">1</span>] = <span class="string">'K'</span></span><br><span class="line">print(B1[<span class="number">3</span>][<span class="number">3</span>][<span class="number">1</span>])</span><br><span class="line"><span class="comment"># 运算符 //整除 %取余 **乘方</span></span><br><span class="line"><span class="comment"># 比较 and or not</span></span><br><span class="line">print(<span class="string">'abc'</span> == <span class="string">'abc'</span>)</span><br><span class="line">print(<span class="literal">True</span> <span class="keyword">and</span> <span class="literal">False</span>)</span><br><span class="line">print(<span class="literal">True</span> <span class="keyword">or</span> <span class="literal">False</span>)</span><br><span class="line">print(<span class="keyword">not</span> <span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 成员运算符 in  not in</span></span><br><span class="line">G1 = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">print(<span class="number">2</span> <span class="keyword">in</span> G1)</span><br><span class="line">print(<span class="number">2</span> <span class="keyword">not</span> <span class="keyword">in</span> G1)</span><br><span class="line">print(<span class="string">'2'</span> <span class="keyword">in</span> G1)</span><br><span class="line"><span class="comment"># 只取key</span></span><br><span class="line">G2 = <span class="number">1</span></span><br><span class="line">print(G2 <span class="keyword">in</span> {<span class="string">'d'</span>:<span class="number">1</span>})</span><br><span class="line">G2 = <span class="string">'d'</span></span><br><span class="line">print(G2 <span class="keyword">in</span> {<span class="string">'d'</span>:<span class="number">1</span>})</span><br><span class="line"><span class="comment"># 身份运算：</span></span><br><span class="line">F1 = <span class="number">1</span></span><br><span class="line">F2 = <span class="number">1.0</span></span><br><span class="line">print(F1 == F2) <span class="comment"># 比较数值相等</span></span><br><span class="line">print(F1 <span class="keyword">is</span> F2) <span class="comment"># 比较两个变量的身份是否相等</span></span><br><span class="line">D1 = <span class="number">2</span></span><br><span class="line">D2 = <span class="number">2</span></span><br><span class="line">print(id(D1))</span><br><span class="line">print(id(D2))</span><br><span class="line"><span class="comment"># 判断变量类型</span></span><br><span class="line">D3 = <span class="number">10</span></span><br><span class="line">print(type(D3) == int)</span><br><span class="line">print(isinstance(D3,int))</span><br><span class="line">print(isinstance(D3,float))</span><br><span class="line">print(isinstance(D3,(int,float)))</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="分支判断">分支判断</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是单行注释</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">这是</span></span><br><span class="line"><span class="string">多行注释</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">e = <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> e == <span class="number">1</span>:</span><br><span class="line">    print(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 简单判断测试</span></span><br><span class="line">account = <span class="string">'AAA'</span></span><br><span class="line">pwd = <span class="string">'111'</span></span><br><span class="line">user_account = input()</span><br><span class="line">user_pwd = input()</span><br><span class="line"><span class="comment"># 逻辑运算符 优先级最低</span></span><br><span class="line"><span class="keyword">if</span> account == user_account <span class="keyword">and</span> pwd == user_pwd:</span><br><span class="line">    print(<span class="string">'YES'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'NO'</span>)</span><br><span class="line"><span class="comment"># constant 常量</span></span><br><span class="line"><span class="comment"># Python 中不存在常量，但是规定常量的写法为：变量名大写</span></span><br><span class="line"><span class="comment"># ACCOUNT = 'AAA'</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># 空语句 占位语句</span></span><br><span class="line"><span class="comment"># elif -> else if</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">elif</span> pwd == <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># input -> type 'str'</span></span><br><span class="line">ty = input()</span><br><span class="line">print(type(ty))</span><br><span class="line"></span><br><span class="line">A1 = <span class="number">1</span></span><br><span class="line">A2 = <span class="number">8</span></span><br><span class="line">print(A1 <span class="keyword">or</span> A2)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="循环">循环</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 循环</span></span><br><span class="line"><span class="comment"># while</span></span><br><span class="line">counter = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> counter <= <span class="number">10</span>:</span><br><span class="line">    counter += <span class="number">1</span></span><br><span class="line">    print(counter)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'END'</span>)</span><br><span class="line"><span class="comment"># for 遍历，循环，序列或集合字典</span></span><br><span class="line">lista = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">for</span> list_a <span class="keyword">in</span> lista: <span class="comment"># 遍历</span></span><br><span class="line">    print(list_a)</span><br><span class="line">listb = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'b'</span>)]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> listb:</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> x:</span><br><span class="line">        print(y)</span><br><span class="line">        <span class="comment"># break 中断循环</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'aaa'</span>)</span><br><span class="line"><span class="comment"># 重复指定次数代码循环</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">10</span>):  <span class="comment"># for(int i = 0; i < 10; i++)</span></span><br><span class="line">    print(x)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">10</span>,<span class="number">2</span>):  <span class="comment"># 2 ：间隔</span></span><br><span class="line">    print(x,end=<span class="string">' | '</span>)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>,<span class="number">0</span>,<span class="number">-2</span>):  <span class="comment"># 递减</span></span><br><span class="line">    print(x,end=<span class="string">' | '</span>)</span><br></pre></td></tr></tbody></table></figure><script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Python/" rel="tag">Python</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/java/algorithm/suan-fa/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">算法</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/android/android-bu-ju-xiang-guan/">
+                <span class="level-item">Android布局相关</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Jmeow
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Moon, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/BJ4501" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://mengclaw.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">萌爪实验室</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">mengclaw.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://furryfan.cn" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Furley</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">furryfan.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Frontend/Css/">
+            <span class="level-start">
+                <span class="level-item">Css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+            <span class="level-start">
+                <span class="level-item">Javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+            <span class="level-start">
+                <span class="level-item">JavaWeb</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Other/">
+            <span class="level-start">
+                <span class="level-item">Other</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+            <span class="level-start">
+                <span class="level-item">日常</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- Logo 暂时禁用，有Logo再换上 -->
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Python基础知识" height="28">
+                
+                </a> -->
+                <p class="is-size-7">
+                © 2020 JmeowTechnology 
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
+
+
+
+    
+
+<script src="/js/bundle.js" defer></script></body></html>

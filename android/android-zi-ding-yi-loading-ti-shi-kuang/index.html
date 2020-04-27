@@ -1,0 +1,1118 @@
+<!DOCTYPE html><html lang="zh"><head>
+    <meta charset="utf-8">
+
+<meta name="generator" content="Hexo 4.0.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<title>Android自定义Loading提示框 - JmeowTechnology</title>
+
+
+    <meta name="description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {       paint = new Pa">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android自定义Loading提示框">
+<meta property="og:url" content="http://www.jmeow.org/android/android-zi-ding-yi-loading-ti-shi-kuang/index.html">
+<meta property="og:site_name" content="JmeowTechnology">
+<meta property="og:description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {       paint = new Pa">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
+<meta property="og:updated_time" content="2020-04-07T12:03:54.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            <!-- Logo 暂时禁用，有Logo再换上 -->
+            <!-- 
+                <img src="/images/logo.svg" alt="Android自定义Loading提示框" height="28">
+             -->
+                JmeowTechnology
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-07T02:46:38.000Z">2020-04-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2636 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Android自定义Loading提示框
+            
+        </h1>
+        <div class="content">
+            <p>工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。</p>
+<h2 id="制作一个旋转的Loading控件">制作一个旋转的Loading控件</h2>
+<ul>
+<li>首先需要自定义View来承载动画</li>
+<li>创建LoadingView继承自View</li>
+<li>初始化画笔和图片资源</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{   </span><br><span class="line">    paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    <span class="comment">//画笔 抗锯齿</span></span><br><span class="line">    paint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    <span class="comment">//图片资源</span></span><br><span class="line">    loadingPic = decodeResource(getResources(), R.drawable.ic_loading);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<a id="more"></a>
+<ul>
+<li>在onMeasure中，获取图片的宽度和高度</li>
+</ul>
+<blockquote>
+<p>由于我们是要对控件进行旋转，所以需要取出旋转的最大直径作为控件的宽高，防止旋转中，图案被遮挡。</p>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>{</span><br><span class="line">    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    <span class="comment">//获取需要旋转的图片宽高</span></span><br><span class="line">    picWidth = loadingPic.getWidth();</span><br><span class="line">    picHeight = loadingPic.getHeight();</span><br><span class="line">    <span class="comment">//选择直角三角形的第三边，作为直径，作为控件的宽高(因需要旋转)</span></span><br><span class="line">    <span class="comment">//a^2 + b^2 = c^2</span></span><br><span class="line">    max = (<span class="keyword">int</span>) Math.sqrt(picWidth * picWidth + picHeight * picHeight);</span><br><span class="line">    setMeasuredDimension(max, max);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>在onDraw中，对图案进行绘制</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>{</span><br><span class="line">    <span class="keyword">super</span>.onDraw(canvas);</span><br><span class="line">    <span class="comment">//移动画布中心至图片中心点</span></span><br><span class="line">    canvas.translate(max / <span class="number">2</span>, max / <span class="number">2</span>);</span><br><span class="line">    <span class="comment">//图片旋转</span></span><br><span class="line">    canvas.rotate(rate);</span><br><span class="line">    <span class="comment">//画出图片</span></span><br><span class="line">    canvas.drawBitmap(loadingPic, -(picWidth / <span class="number">2</span>), -(picHeight / <span class="number">2</span>), paint);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>至此，我们已经把对应的图片绘制到控件上了，一切都还比较常规，没有什么难度，接下来要处理的是动画部分。</p>
+</blockquote>
+<ul>
+<li>首先使用ValueAnimator来做一个将沙漏旋转180度的动画。</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开始动画</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnimate</span><span class="params">()</span> </span>{</span><br><span class="line">    animator = ValueAnimator.ofFloat(<span class="number">0</span>, <span class="number">180</span>);</span><br><span class="line">    animator.setDuration(<span class="number">650</span>); <span class="comment">//设置动画时长</span></span><br><span class="line">    animator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">    animator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>{</span><br><span class="line">            rate = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            invalidate();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    animator.start();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>Loading动画是一个可循环的沙漏，也就是说，只要Loading界面没有关闭，需要一直循环下去。这部分在网络搜索了很久，但是一直没有找到合适的办法。</p>
+</blockquote>
+<ol>
+<li>方法1 - TimerTask + Handler</li>
+</ol>
+<blockquote>
+<p>第一次的尝试，使用TimerTask + Handler进行动画，间隔时间进行动画，这里面要注意一点，在TimerTask的run方法执行UI操作，会弹出异常，因为Android只允许在UI线程进行UI操作。所以需要Handler。</p>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnimate</span><span class="params">()</span> </span>{</span><br><span class="line">    Timer timer = <span class="keyword">new</span> Timer();</span><br><span class="line">    TimerTask timerTask = <span class="keyword">new</span> TimerTask() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">            rotate();</span><br><span class="line">        }</span><br><span class="line">    };</span><br><span class="line">    timer.schedule(timerTask, <span class="number">100</span>, <span class="number">750</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>这种方法虽然可以实现，但是十分的麻烦。所以换了一种思路。从ValueAnimator下手</p>
+</blockquote>
+<ol start="2">
+<li>方法2 - ValueAnimator.INFINITE</li>
+</ol>
+<blockquote>
+<p>ValueAnimator中有一个方法setRepeatCount，可以将动画循环执行，经过测试，确实有效，但是，沙漏每旋转一次，中间都需要间隔停止一下，但是这个函数，并不可以设置每次动画循环的间隔。所以我们继续想办法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animator.setRepeatCount(ValueAnimator.INFINITE);</span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>方法3 - onAnimationEnd</li>
+</ol>
+<blockquote>
+<p>经查阅资料，发现ValueAnimator可以添加监听，也就是addListener,在监听中，可以对动画的起止等操作进行监听，onAnimationEnd则是在动画执行结束时的监听。那么我们是不是可以，在动画结束之后，设置一个启示延迟，然后再执行动画，下一次动画结束时，仍然会触发这个监听，那么不就可以实现动画的循环了么。setStartDelay方法，可以设置ValueAnimator动画延迟多久开始。</p>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开始动画</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnimate</span><span class="params">()</span> </span>{</span><br><span class="line">    animator = ValueAnimator.ofFloat(<span class="number">0</span>, <span class="number">180</span>);</span><br><span class="line">    animator.setDuration(<span class="number">650</span>); <span class="comment">//设置动画时长</span></span><br><span class="line">    animator.setInterpolator(<span class="keyword">new</span> LinearInterpolator());</span><br><span class="line">    animator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>{</span><br><span class="line">            rate = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            invalidate();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    animator.addListener(<span class="keyword">new</span> AnimatorListenerAdapter() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>{</span><br><span class="line">            animator.setStartDelay(<span class="number">300</span>);</span><br><span class="line">            animator.start();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    animator.start();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>最后测试发现，动画可以循环执行，也达到了我所预期的效果</p>
+</blockquote>
+<ol start="4">
+<li>方法4 - AnticipateInterpolator</li>
+</ol>
+<blockquote>
+<p>其实方法3已经是一个很优秀的解法了，在方法3测试的时候，使用的是LinearInterpolator的动画效果。但是经过测试，发现AnticipateInterpolator的动画效果更加的有趣。</p>
+</blockquote>
+<blockquote>
+<p>AnticipateInterpolator是先回拉一下再进行正常动画轨迹，类似于投掷的动画效果，在旋转中也比较酷炫。但是由于动画变成了一组，也就是说，需要先0-180度旋转，在进行180-360度旋转，那么如何实现一组动画的实现和循环播放呢。<br>
+这个时候，就用到了AnimatorSet，它可以对一组ValueAnimator动画进行顺序或特殊需求的播放。但是AnimatorSet,不支持动画的循环播放，那怎么办呢，有着上一个监听器的经验，在AnimatorSet中，我们也发现了监听器的功能，那么就很简单了，在监听动画组播放结束之后，重新执行动画播放即可。</p>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个带动感的动画</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startFastAnimate</span><span class="params">()</span> </span>{</span><br><span class="line">    ValueAnimator animatorA = ValueAnimator.ofFloat(<span class="number">0</span>, <span class="number">180</span>);</span><br><span class="line">    animatorA.setDuration(<span class="number">750</span>);</span><br><span class="line">    animatorA.setStartDelay(<span class="number">200</span>);</span><br><span class="line">    animatorA.setInterpolator(<span class="keyword">new</span> AnticipateInterpolator());</span><br><span class="line">    animatorA.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>{</span><br><span class="line">            rate = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            invalidate();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    ValueAnimator animatorB = ValueAnimator.ofFloat(<span class="number">180</span>, <span class="number">360</span>);</span><br><span class="line">    animatorB.setDuration(<span class="number">750</span>);</span><br><span class="line">    animatorB.setStartDelay(<span class="number">200</span>);</span><br><span class="line">    animatorB.setInterpolator(<span class="keyword">new</span> AnticipateInterpolator());</span><br><span class="line">    animatorB.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>{</span><br><span class="line">            rate = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            invalidate();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置动画链</span></span><br><span class="line">    <span class="keyword">final</span> AnimatorSet set = <span class="keyword">new</span> AnimatorSet();</span><br><span class="line">    set.playSequentially(animatorA, animatorB);</span><br><span class="line">    set.addListener(<span class="keyword">new</span> AnimatorListenerAdapter() {</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>{</span><br><span class="line">            set.start();</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">    set.start();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<h2 id="制作Loading载体Dialog">制作Loading载体Dialog</h2>
+<blockquote>
+<p>现在，我们就可以播放这个带动感的动画了。但是工作就完成了么，并不是，这只是个View，它的载体，也就是Dialog，需要设置一下。</p>
+</blockquote>
+<ul>
+<li>首先创建一个布局文件，用于放置Loading界面的布局样式</li>
+</ul>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/root_view"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/widget_loading_background"</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="tag"><<span class="name">com.dwzq.market.widget.loading.KLoadingView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/k_loading"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:padding</span>=<span class="string">"5dp"</span> /></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->FrameLayout</span>></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>浅灰色背景样式</li>
+</ul>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>></span></span><br><span class="line">    <span class="comment"><!--圆角弧度--></span></span><br><span class="line">    <span class="tag"><<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"6dp"</span> /></span></span><br><span class="line">    <span class="comment"><!--背景填充色--></span></span><br><span class="line">    <span class="tag"><<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#66091018"</span> /></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->shape</span>></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>设置Dialog的主题Style</li>
+</ul>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><!--加载dialog的style--></span></span><br><span class="line"><span class="tag"><<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否有边框 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowFrame"</span>></span>@null<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否带有标题 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 提示框背景颜色 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>></span>@android:color/transparent<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否为浮动 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsFloating"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否允许对话框的背景变暗 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:backgroundDimEnabled"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 重叠在window内容区域的前景，用于在title下放置阴影 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>></span>@null<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->style</span>></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>之后就可以通过Dialog来对该Loading界面进行显示了，期间可以进行一些设置，比如，不可点击空白区域取消，设置背景不变暗，设置Loading界面半透明等操作。</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showLoading</span><span class="params">(Context context)</span> </span>{</span><br><span class="line">    Dialog dialog = <span class="keyword">new</span> Dialog(context, R.style.loading_dialog);</span><br><span class="line">    View view = LayoutInflater.from(context).inflate(R.layout.widget_k_loading, <span class="keyword">null</span>);</span><br><span class="line">    FrameLayout layout = view.findViewById(R.id.root_view);</span><br><span class="line">    dialog.setContentView(layout);</span><br><span class="line">	<span class="comment">//设置外边空白区域不可点击</span></span><br><span class="line">    dialog.setCanceledOnTouchOutside(<span class="keyword">false</span>);</span><br><span class="line">    Window window = dialog.getWindow();</span><br><span class="line">    <span class="keyword">if</span> (window != <span class="keyword">null</span>){</span><br><span class="line">        <span class="comment">//设置背景透明</span></span><br><span class="line">        window.setBackgroundDrawable(<span class="keyword">new</span> ColorDrawable(Color.TRANSPARENT));</span><br><span class="line">        <span class="comment">//设置Loading外界面不变暗</span></span><br><span class="line">        WindowManager.LayoutParams lp = window.getAttributes();</span><br><span class="line">        lp.dimAmount =<span class="number">0f</span>;</span><br><span class="line">        window.setAttributes(lp);</span><br><span class="line">    }</span><br><span class="line">    KLoadingView view = dialog.findViewById(R.id.k_loading);</span><br><span class="line">	<span class="comment">//开始动画旋转</span></span><br><span class="line">    view.startAnimate();</span><br><span class="line">    dialog.show();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>至此，我们就完成了简单的自定义Loading的实现。可以用在项目中了，收工！</p>
+</blockquote>
+<hr>
+<h2 id="一些Debug的补充">一些Debug的补充</h2>
+<p>第一版设置Dialog的代码是这样的：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dialog dialog = <span class="keyword">new</span> Dialog(context);</span><br><span class="line">dialog.setContentView(R.layout.widget_k_loading);</span><br><span class="line"><span class="comment">//省略设置逻辑</span></span><br></pre></td></tr></tbody></table></figure>
+<p>当时的测试机是Android 6和Android 9，并没有任何问题。但是在兼容性检查中，发现，在Android5.0上，Dialog的位置并非居中，而是靠左或靠右。初步判断是兼容性的问题，但是问题出现在哪里了呢？<br>
+百思不得解之后，我看了一下其他开源Loading库，对于Dialog部分的处理，发现了不同。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dialog dialog = <span class="keyword">new</span> Dialog(context, R.style.loading_dialog);</span><br><span class="line">View view = LayoutInflater.from(context).inflate(R.layout.widget_k_loading, <span class="keyword">null</span>);</span><br><span class="line">FrameLayout layout = view.findViewById(R.id.root_view);</span><br><span class="line">dialog.setContentView(layout);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>首先是在设置Dialog时，使用了带有Style的重载方法。</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Dialog</span><span class="params">(@NonNull Context context, @StyleRes <span class="keyword">int</span> themeResId)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p>themeResId的注释描述为"a style resource describing the theme to use for the window"，也就是描述窗口的主题资源。因为Dialog也是一个window，具体主题参数和解释见正文。</p>
+<ul>
+<li>第二个是，setContentView，不同于直接给定一个layoutRes，这里传递了一个View和LayoutParams</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@NonNull View view, @Nullable ViewGroup.LayoutParams params)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p>然而为什么会导致这种情况？在5.0的机器上，当注释掉setBackgroundDrawable时，发现了问题所在，实际上包裹LoadingView外层的布局出现了问题，变成了一个长条形的布局。</p>
+<p>为了解释这个问题，需要依次查看不同部分的源码，看一下，到底有什么不同。</p>
+<p>首先看一下setContentView，这个方法提供了三种重载。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@LayoutRes <span class="keyword">int</span> layoutResID)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@NonNull View view)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@NonNull View view, @Nullable ViewGroup.LayoutParams params)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p>方法1与23区别比较大，2就是带<code>new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)</code>默认值的3。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//来自PhoneWindow.java</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(View view)</span> </span>{</span><br><span class="line">    setContentView(view, <span class="keyword">new</span> ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这也回答了一个问题，使用setContentView(View)的方式时，无论layout中根容器的宽高是什么，都按照WRAP_CONTENT的方式。而在setContentView(int)中，用户设置的布局，是会被添加到mContentParent中，而mContentParent是由generateLayout()生成的。在这种方式下可以直接通过在layout的根容器中指定宽、高来设置布局的尺寸。但是使用MATCH_PARENT，并不会产生效果。</p>
+<p>但是这并不是导致Dialog显示偏移的原因。那来看一下new Dialog时添加的theme，是不是由于这个原因导致的。<br>
+查看Dialog构造器部分的代码，发现在没有给定themeId的时候，会使用默认的<code>R.attr.dialogTheme</code></p>
+<blockquote>
+<p>Android Dialog 部分源码</p>
+</blockquote>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Dialog(<span class="meta">@NonNull</span> Context context, <span class="meta">@StyleRes</span> <span class="keyword">int</span> themeResId, <span class="keyword">boolean</span> createContextThemeWrapper) {</span><br><span class="line">    <span class="keyword">if</span> (createContextThemeWrapper) {</span><br><span class="line">        <span class="keyword">if</span> (themeResId == ResourceId.ID_NULL) {</span><br><span class="line">            <span class="keyword">final</span> TypedValue outValue = <span class="keyword">new</span> TypedValue();</span><br><span class="line">            context.getTheme().resolveAttribute(R.attr.dialogTheme, outValue, <span class="keyword">true</span>);</span><br><span class="line">            themeResId = outValue.resourceId;</span><br><span class="line">        }</span><br><span class="line">        mContext = <span class="keyword">new</span> ContextThemeWrapper(context, themeResId);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>那么来看一下默认的theme实现是什么样的，或许就可以解释为什么在不同sdk版本下显示存在差异了。文件位置在android-sdk\platforms\android-<版本号>\data\res\values\themes.xml中，但是观察并没有发现差异。</p>
+<p>在只继承系统Theme的情况下，5.0和9.0的表现是不同的，5.0是一个长条形的框，而9.0的尺寸是和LoadingView的尺寸相同的。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->style</span>></span><br></pre></td></tr></tbody></table></figure>
+<p>暂时没有更好的办法研究问题出现在哪里了，不过问题目前原因是清晰了，就是因为没有设置Dialog的Theme，与setContentView使用的参数无关。至于不同版本真正产生这个区别的原因，先记录下，等待一个答案的机会。</p>
+<h3 id="参考">参考</h3>
+<p><a href="https://www.cnblogs.com/chorm590/p/6854531.html">https://www.cnblogs.com/chorm590/p/6854531.html</a></p>
+<script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/" rel="tag">Android</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/android/jie-jue-dagger2-databinding-bian-yi-cuo-wu-ti-shi-wen-ti/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">解决Dagger2+DataBinding编译错误提示问题</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/android/android-ying-yong-qian-hou-tai-zhuang-tai-pan-duan/">
+                <span class="level-item">Android应用前后台状态判断</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Jmeow
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Moon, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            22
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/BJ4501" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://mengclaw.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">萌爪实验室</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">mengclaw.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://furryfan.cn" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Furley</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">furryfan.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Frontend/Css/">
+            <span class="level-start">
+                <span class="level-item">Css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+            <span class="level-start">
+                <span class="level-item">Javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/Basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+            <span class="level-start">
+                <span class="level-item">JavaWeb</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Other/">
+            <span class="level-start">
+                <span class="level-item">Other</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+            <span class="level-start">
+                <span class="level-item">日常</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- Logo 暂时禁用，有Logo再换上 -->
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Android自定义Loading提示框" height="28">
+                
+                </a> -->
+                <p class="is-size-7">
+                © 2020 JmeowTechnology 
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
+
+
+
+    
+
+<script src="/js/bundle.js" defer></script></body></html>
