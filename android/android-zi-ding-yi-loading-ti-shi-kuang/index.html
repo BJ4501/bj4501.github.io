@@ -1,25 +1,27 @@
-<!DOCTYPE html><html lang="zh"><head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
 
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.0.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <title>Android自定义Loading提示框 - JmeowTechnology</title>
 
 
-    <meta name="description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {       paint = new Pa">
+    <meta name="description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {&amp;nbsp;&amp;nbsp;&amp;nbsp;    paint = new Pa">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android自定义Loading提示框">
-<meta property="og:url" content="http://www.jmeow.org/android/android-zi-ding-yi-loading-ti-shi-kuang/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;android&#x2F;android-zi-ding-yi-loading-ti-shi-kuang&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
-<meta property="og:description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {       paint = new Pa">
+<meta property="og:description" content="工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。 制作一个旋转的Loading控件  首先需要自定义View来承载动画 创建LoadingView继承自View 初始化画笔和图片资源  1234567private void init() {&amp;nbsp;&amp;nbsp;&amp;nbsp;    paint = new Pa">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-07T12:03:54.122Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2022-04-13T16:48:58.985Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -31,25 +33,29 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
     
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
     
     
     
     
+<link rel="stylesheet" href="/css/back-to-top.css">
 
     
     
@@ -58,16 +64,16 @@
     
     
     
-    
+    <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
 <link rel="stylesheet" href="/css/style.css">
-
-
+</head>
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -83,15 +89,20 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives">Archives</a>
+                <a class="navbar-item"
+                href="/archives">Archives</a>
                 
-                <a class="navbar-item" href="/categories">Categories</a>
+                <a class="navbar-item"
+                href="/categories">Categories</a>
                 
-                <a class="navbar-item" href="/tags">Tags</a>
+                <a class="navbar-item"
+                href="/tags">Tags</a>
                 
-                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item"
+                href="/about">About</a>
                 
             </div>
             
@@ -119,7 +130,8 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
     <div class="card-content article ">
         
@@ -128,7 +140,7 @@
                 <time class="level-item has-text-grey" datetime="2020-04-07T02:46:38.000Z">2020-04-07</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
                 </div>
                 
                 
@@ -160,7 +172,7 @@
 <li>创建LoadingView继承自View</li>
 <li>初始化画笔和图片资源</li>
 </ul>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{   </span><br><span class="line">    paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    <span class="comment">//画笔 抗锯齿</span></span><br><span class="line">    paint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    <span class="comment">//图片资源</span></span><br><span class="line">    loadingPic = decodeResource(getResources(), R.drawable.ic_loading);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{&nbsp;&nbsp;&nbsp;</span><br><span class="line">    paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    <span class="comment">//画笔 抗锯齿</span></span><br><span class="line">    paint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    <span class="comment">//图片资源</span></span><br><span class="line">    loadingPic = decodeResource(getResources(), R.drawable.ic_loading);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <a id="more"></a>
 <ul>
 <li>在onMeasure中，获取图片的宽度和高度</li>
@@ -229,15 +241,15 @@
 <ul>
 <li>首先创建一个布局文件，用于放置Loading界面的布局样式</li>
 </ul>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/root_view"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/widget_loading_background"</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="tag"><<span class="name">com.dwzq.market.widget.loading.KLoadingView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/k_loading"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:padding</span>=<span class="string">"5dp"</span> /></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->FrameLayout</span>></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/root_view"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:background</span>=<span class="string">"@drawable/widget_loading_background"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">com.dwzq.market.widget.loading.KLoadingView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/k_loading"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginTop</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginRight</span>=<span class="string">"40dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginBottom</span>=<span class="string">"10dp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:padding</span>=<span class="string">"5dp"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>浅灰色背景样式</li>
 </ul>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>></span></span><br><span class="line">    <span class="comment"><!--圆角弧度--></span></span><br><span class="line">    <span class="tag"><<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"6dp"</span> /></span></span><br><span class="line">    <span class="comment"><!--背景填充色--></span></span><br><span class="line">    <span class="tag"><<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#66091018"</span> /></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->shape</span>></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--圆角弧度--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"6dp"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--背景填充色--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#66091018"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>设置Dialog的主题Style</li>
 </ul>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><!--加载dialog的style--></span></span><br><span class="line"><span class="tag"><<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否有边框 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowFrame"</span>></span>@null<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否带有标题 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 提示框背景颜色 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>></span>@android:color/transparent<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否为浮动 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsFloating"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 是否允许对话框的背景变暗 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:backgroundDimEnabled"</span>></span>true<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="xml">    <span class="comment"><!-- 重叠在window内容区域的前景，用于在title下放置阴影 --></span></span></span><br><span class="line"><span class="xml">    <span class="tag"><<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>></span>@null<span class="tag"><!--<span class="name"-->item</span>></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->style</span>></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--加载dialog的style--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>&gt;</span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 是否有边框 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowFrame"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 是否带有标题 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 提示框背景颜色 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@android:color/transparent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 是否为浮动 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsFloating"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 是否允许对话框的背景变暗 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:backgroundDimEnabled"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 重叠在window内容区域的前景，用于在title下放置阴影 --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>之后就可以通过Dialog来对该Loading界面进行显示了，期间可以进行一些设置，比如，不可点击空白区域取消，设置背景不变暗，设置Loading界面半透明等操作。</li>
 </ul>
@@ -274,13 +286,31 @@
 <p>Android Dialog 部分源码</p>
 </blockquote>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Dialog(<span class="meta">@NonNull</span> Context context, <span class="meta">@StyleRes</span> <span class="keyword">int</span> themeResId, <span class="keyword">boolean</span> createContextThemeWrapper) {</span><br><span class="line">    <span class="keyword">if</span> (createContextThemeWrapper) {</span><br><span class="line">        <span class="keyword">if</span> (themeResId == ResourceId.ID_NULL) {</span><br><span class="line">            <span class="keyword">final</span> TypedValue outValue = <span class="keyword">new</span> TypedValue();</span><br><span class="line">            context.getTheme().resolveAttribute(R.attr.dialogTheme, outValue, <span class="keyword">true</span>);</span><br><span class="line">            themeResId = outValue.resourceId;</span><br><span class="line">        }</span><br><span class="line">        mContext = <span class="keyword">new</span> ContextThemeWrapper(context, themeResId);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>那么来看一下默认的theme实现是什么样的，或许就可以解释为什么在不同sdk版本下显示存在差异了。文件位置在android-sdk\platforms\android-<版本号>\data\res\values\themes.xml中，但是观察并没有发现差异。</p>
+<p>那么来看一下默认的theme实现是什么样的，或许就可以解释为什么在不同sdk版本下显示存在差异了。文件位置在android-sdk\platforms\android-&lt;版本号&gt;\data\res\values\themes.xml中，但是观察并没有发现差异。</p>
 <p>在只继承系统Theme的情况下，5.0和9.0的表现是不同的，5.0是一个长条形的框，而9.0的尺寸是和LoadingView的尺寸相同的。</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>></span></span><br><span class="line"><span class="tag"><!--<span class="name"-->style</span>></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"loading_dialog"</span> <span class="attr">parent</span>=<span class="string">"android:style/Theme.Dialog"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 <p>暂时没有更好的办法研究问题出现在哪里了，不过问题目前原因是清晰了，就是因为没有设置Dialog的Theme，与setContentView使用的参数无关。至于不同版本真正产生这个区别的原因，先记录下，等待一个答案的机会。</p>
 <h3 id="参考">参考</h3>
 <p><a href="https://www.cnblogs.com/chorm590/p/6854531.html">https://www.cnblogs.com/chorm590/p/6854531.html</a></p>
-<script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -324,16 +354,22 @@
 
 
 </div>
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <nav class="level">
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                        <img class="" src="/images/avatar.jpg" alt="Jmeow">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -362,7 +398,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            22
+                            40
                         </p>
                     </a>
                 </div>
@@ -402,25 +438,29 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BJ4501">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com/bj4501">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="tencent://message/?uin=3080293757">
                 
                 <i class="fab fa-qq"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="mailto:neko@jmeow.org">
                 
                 <i class="fas fa-envelope"></i>
                 
@@ -463,13 +503,36 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://runo.plus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">露诺的小窝</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">runo.plus</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rehtt.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Rehtt&#39;s Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rehtt.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
 </div>
 
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
@@ -477,23 +540,23 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Android/">
+        <a class="level is-marginless" href="/categories/android/">
             <span class="level-start">
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">23</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/">
+        <a class="level is-marginless" href="/categories/frontend/">
             <span class="level-start">
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Frontend/Css/">
+        <a class="level is-marginless" href="/categories/frontend/css/">
             <span class="level-start">
                 <span class="level-item">Css</span>
             </span>
@@ -501,7 +564,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+        <a class="level is-marginless" href="/categories/frontend/javascript/">
             <span class="level-start">
                 <span class="level-item">Javascript</span>
             </span>
@@ -509,15 +572,15 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Java/">
+        <a class="level is-marginless" href="/categories/java/">
             <span class="level-start">
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+        <a class="level is-marginless" href="/categories/java/algorithm/">
             <span class="level-start">
                 <span class="level-item">Algorithm</span>
             </span>
@@ -525,7 +588,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/Basic/">
+        <a class="level is-marginless" href="/categories/java/basic/">
             <span class="level-start">
                 <span class="level-item">Basic</span>
             </span>
@@ -533,23 +596,23 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+        <a class="level is-marginless" href="/categories/java/javaweb/">
             <span class="level-start">
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Other/">
+        <a class="level is-marginless" href="/categories/other/">
             <span class="level-start">
                 <span class="level-item">Other</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+        <a class="level is-marginless" href="/categories/daily/">
             <span class="level-start">
                 <span class="level-item">日常</span>
             </span>
@@ -567,7 +630,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -583,12 +646,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -599,7 +794,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -675,7 +870,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -696,7 +891,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -710,7 +905,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -779,7 +974,12 @@
     
 </div>
 
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -790,12 +990,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -806,7 +1138,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -882,7 +1214,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -903,7 +1235,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -917,7 +1249,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -999,12 +1331,13 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                © 2020 JmeowTechnology 
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                &copy; 2022 JmeowTechnology&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
                 <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_container_site_pv">
+                共<span id="busuanzi_value_site_pv">0</span>次访问
                 </span>
                 
                 </p>
@@ -1048,7 +1381,20 @@
 <script>moment.locale("zh-CN");</script>
 
 
-<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.jmeow.org',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
@@ -1056,11 +1402,14 @@
 
 
 
+
 <script src="/js/animation.js"></script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
 
 
 
@@ -1068,18 +1417,48 @@
     <h6>Your browser is out-of-date!</h6>
     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
             my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
 
 <a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
+<script src="/js/back-to-top.js" defer></script>
 
 
 
@@ -1094,14 +1473,13 @@
 
 
 
-
-
+<script src="/js/main.js" defer></script>
 
     
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1109,10 +1487,24 @@
         </div>
     </div>
 </div>
-<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
-
-
-
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
-
-<script src="/js/bundle.js" defer></script></body></html>
+</body>
+</html>

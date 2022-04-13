@@ -1,25 +1,27 @@
-<!DOCTYPE html><html lang="zh"><head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
 
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.0.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <title>ES6的常见知识和常用语法 - JmeowTechnology</title>
 
 
-    <meta name="description" content="ES6常用语法 ES6  ECMA Script, Javascript的语言标准 提升JS编写大型的复杂的应用程序的能力(模块化) Babel: ES6 -> ES5的转换器">
+    <meta name="description" content="ES6常用语法 ES6  ECMA Script, Javascript的语言标准 提升JS编写大型的复杂的应用程序的能力(模块化) Babel: ES6 -&amp;gt; ES5的转换器">
 <meta name="keywords" content="Javascript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6的常见知识和常用语法">
-<meta property="og:url" content="http://www.jmeow.org/frontend/javascript/es6-de-chang-jian-zhi-shi-he-chang-yong-yu-fa/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;frontend&#x2F;javascript&#x2F;es6-de-chang-jian-zhi-shi-he-chang-yong-yu-fa&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
-<meta property="og:description" content="ES6常用语法 ES6  ECMA Script, Javascript的语言标准 提升JS编写大型的复杂的应用程序的能力(模块化) Babel: ES6 -> ES5的转换器">
+<meta property="og:description" content="ES6常用语法 ES6  ECMA Script, Javascript的语言标准 提升JS编写大型的复杂的应用程序的能力(模块化) Babel: ES6 -&amp;gt; ES5的转换器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-03T09:06:58.275Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2022-04-13T16:48:58.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -31,25 +33,29 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
     
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
     
     
     
     
+<link rel="stylesheet" href="/css/back-to-top.css">
 
     
     
@@ -58,16 +64,16 @@
     
     
     
-    
+    <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
 <link rel="stylesheet" href="/css/style.css">
-
-
+</head>
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -83,15 +89,20 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives">Archives</a>
+                <a class="navbar-item"
+                href="/archives">Archives</a>
                 
-                <a class="navbar-item" href="/categories">Categories</a>
+                <a class="navbar-item"
+                href="/categories">Categories</a>
                 
-                <a class="navbar-item" href="/tags">Tags</a>
+                <a class="navbar-item"
+                href="/tags">Tags</a>
                 
-                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item"
+                href="/about">About</a>
                 
             </div>
             
@@ -119,7 +130,8 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
     <div class="card-content article ">
         
@@ -128,7 +140,7 @@
                 <time class="level-item has-text-grey" datetime="2018-11-23T07:48:11.000Z">2018-11-23</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Frontend/">Frontend</a> / <a class="has-link-grey -link" href="/categories/Frontend/Javascript/">Javascript</a>
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/frontend/javascript/">Javascript</a>
                 </div>
                 
                 
@@ -158,7 +170,7 @@
 <ul>
 <li>ECMA Script, Javascript的语言标准</li>
 <li>提升JS编写大型的复杂的应用程序的能力(模块化)</li>
-<li>Babel: ES6 -> ES5的转换器</li>
+<li>Babel: ES6 -&gt; ES5的转换器</li>
 </ul>
 <a id="more"></a>
 <h3 id="let-const">let, const</h3>
@@ -173,7 +185,7 @@
 <ul>
 <li>块级作用域</li>
 </ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 块级作用域</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) {</span><br><span class="line">    <span class="keyword">var</span> test = <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">//1</span></span><br><span class="line">---</span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) {</span><br><span class="line">    <span class="keyword">let</span> test1 = <span class="number">2</span>;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(test1); <span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 块级作用域2</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, iLength = arr.length; i < iLength; i++){</span><br><span class="line">    <span class="comment">//do sth</span></span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// 4 (说明此时程序已经正确执行4次，但是这个变量i本身并不需要作为全局变量)</span></span><br><span class="line">--- </span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, iLength = arr.length; i < iLength; i++){</span><br><span class="line">    <span class="comment">//do sth</span></span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//报错</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 块级作用域</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) {</span><br><span class="line">    <span class="keyword">var</span> test = <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">//1</span></span><br><span class="line">---</span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>) {</span><br><span class="line">    <span class="keyword">let</span> test1 = <span class="number">2</span>;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(test1); <span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 块级作用域2</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, iLength = arr.length; i &lt; iLength; i++){</span><br><span class="line">    <span class="comment">//do sth</span></span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// 4 (说明此时程序已经正确执行4次，但是这个变量i本身并不需要作为全局变量)</span></span><br><span class="line">--- </span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, iLength = arr.length; i &lt; iLength; i++){</span><br><span class="line">    <span class="comment">//do sth</span></span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">//报错</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>不存在变量提升</li>
 </ul>
@@ -189,31 +201,31 @@
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对象解构赋值</span></span><br><span class="line"><span class="keyword">let</span> o = {</span><br><span class="line">    p: <span class="number">42</span>,</span><br><span class="line">    q: <span class="literal">true</span></span><br><span class="line">};</span><br><span class="line"><span class="keyword">let</span> {</span><br><span class="line">    p,</span><br><span class="line">    q</span><br><span class="line">} = o;</span><br><span class="line"><span class="built_in">console</span>.log(p, q); <span class="comment">// 42 true</span></span><br><span class="line">----</span><br><span class="line"><span class="keyword">let</span> {</span><br><span class="line">    a = <span class="number">10</span>, b = <span class="number">5</span></span><br><span class="line">} = {</span><br><span class="line">    a: <span class="number">3</span></span><br><span class="line">}; <span class="comment">//a = 3, b = 5</span></span><br><span class="line">----</span><br><span class="line"><span class="keyword">let</span> metaData = {</span><br><span class="line">    title: <span class="string">'abc'</span>,</span><br><span class="line">    test: [{</span><br><span class="line">        title: <span class="string">'test'</span>,</span><br><span class="line">        desc: <span class="string">'desc'</span></span><br><span class="line">    }]</span><br><span class="line">}</span><br><span class="line"><span class="keyword">let</span> {</span><br><span class="line">    title: esTitle,</span><br><span class="line">    test: [{</span><br><span class="line">        title: cnTitle</span><br><span class="line">    }]</span><br><span class="line">} = metaData; <span class="comment">//abc, test</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="箭头函数">箭头函数</h3>
 <ul>
-<li>参数 => 表达式/语句</li>
+<li>参数 =&gt; 表达式/语句</li>
 </ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> double = <span class="function"><span class="params">x</span> =></span> <span class="number">2</span> * x;</span><br><span class="line"><span class="keyword">let</span> treble = <span class="function"><span class="params">x</span> =></span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span> * x;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'double: '</span>, double(value));  <span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'treble: '</span>, treble(value));  <span class="comment">//6</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> value = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">let</span> double = <span class="function"><span class="params">x</span> =&gt;</span> <span class="number">2</span> * x;</span><br><span class="line"><span class="keyword">let</span> treble = <span class="function"><span class="params">x</span> =&gt;</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span> * x;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'double: '</span>, double(value));  <span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'treble: '</span>, treble(value));  <span class="comment">//6</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>继承外层作用域(没有独立作用域)</li>
 </ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = {</span><br><span class="line">    commonFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);  </span><br><span class="line">    },</span><br><span class="line">    arrowFn: <span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);  </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">obj.commonFn();  <span class="comment">//this 指向obj作用域</span></span><br><span class="line">obj.arrowFn();  <span class="comment">//this 指向了obj所在作用域，window</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = {</span><br><span class="line">    commonFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);  </span><br><span class="line">    },</span><br><span class="line">    arrowFn: <span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);  </span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line">obj.commonFn();  <span class="comment">//this 指向obj作用域</span></span><br><span class="line">obj.arrowFn();  <span class="comment">//this 指向了obj所在作用域，window</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>不能用作构造函数</li>
 </ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Ani = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{}</span><br><span class="line"><span class="keyword">let</span> ani = <span class="keyword">new</span> Ani(); <span class="comment">//OK</span></span><br><span class="line">---</span><br><span class="line"><span class="keyword">let</span> Ani = <span class="function"><span class="params">()</span> =></span> {}</span><br><span class="line"><span class="keyword">let</span> ani = <span class="keyword">new</span> Ani(); <span class="comment">//报错</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> Ani = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{}</span><br><span class="line"><span class="keyword">let</span> ani = <span class="keyword">new</span> Ani(); <span class="comment">//OK</span></span><br><span class="line">---</span><br><span class="line"><span class="keyword">let</span> Ani = <span class="function"><span class="params">()</span> =&gt;</span> {}</span><br><span class="line"><span class="keyword">let</span> ani = <span class="keyword">new</span> Ani(); <span class="comment">//报错</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>没有prototype属性</li>
 </ul>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> commonFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{};</span><br><span class="line"><span class="keyword">let</span> arrowFn = <span class="function"><span class="params">()</span> =></span> {};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(commonFn.prototype);  <span class="comment">//constructor</span></span><br><span class="line"><span class="built_in">console</span>.log(arrowFn.prototype);  <span class="comment">//undefined</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> commonFn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{};</span><br><span class="line"><span class="keyword">let</span> arrowFn = <span class="function"><span class="params">()</span> =&gt;</span> {};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(commonFn.prototype);  <span class="comment">//constructor</span></span><br><span class="line"><span class="built_in">console</span>.log(arrowFn.prototype);  <span class="comment">//undefined</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="模板字符串">模板字符串</h3>
 <ul>
 <li>反引号标识 ``</li>
 <li>支持多行字符串</li>
 </ul>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//基本用法</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag"><<span class="name">div</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>></span>Test<span class="tag"><!--<span class="name"-->h1</span>></span><br><span class="line"><span class="tag"><!--<span class="name"-->div</span>></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str; //在body中显示字符串</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//基本用法</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str; //在body中显示字符串</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>支持变量和表达式</li>
 </ul>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//嵌套变量的用法</span><br><span class="line">let name = 'Jmeow';</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag"><<span class="name">div</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>></span>${name}<span class="tag"><!--<span class="name"-->h1</span>></span><br><span class="line"><span class="tag"><!--<span class="name"-->div</span>></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br><span class="line"></span><br><span class="line">//嵌套函数的用法</span><br><span class="line">let getName = () => {</span><br><span class="line">    return 'Jmeow Test';</span><br><span class="line">};</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag"><<span class="name">div</span>></span></span><br><span class="line">    <span class="tag"><<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>></span>${getName()}<span class="tag"><!--<span class="name"-->h1</span>></span><br><span class="line"><span class="tag"><!--<span class="name"-->div</span>></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br><span class="line"></span><br><span class="line">//循环嵌套</span><br><span class="line">let names = ['AA', 'BB', 'CC'];</span><br><span class="line">let str=`</span><br><span class="line">    <span class="tag"><<span class="name">ul</span>></span></span><br><span class="line">        ${</span><br><span class="line">            names.map(name => `<span class="tag"><<span class="name">li</span>></span>Hi, I am ${name}<span class="tag"><!--<span class="name"-->li</span>></span>`).join('')<br><span class="line">        }</span><br><span class="line">    <span class="tag"><!--<span class="name"-->ul</span>></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//嵌套变量的用法</span><br><span class="line">let name = 'Jmeow';</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>${name}<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br><span class="line"></span><br><span class="line">//嵌套函数的用法</span><br><span class="line">let getName = () =&gt; {</span><br><span class="line">    return 'Jmeow Test';</span><br><span class="line">};</span><br><span class="line">let str = `</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>${getName()}<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br><span class="line"></span><br><span class="line">//循环嵌套</span><br><span class="line">let names = ['AA', 'BB', 'CC'];</span><br><span class="line">let str=`</span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        ${</span><br><span class="line">            names.map(name =&gt; `<span class="tag">&lt;<span class="name">li</span>&gt;</span>Hi, I am ${name}<span class="tag">&lt;/<span class="name">li</span>&gt;</span>`).join('')</span><br><span class="line">        }</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">`;</span><br><span class="line">document.querySelector('body').innerHTML = str;</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="Promise对象">Promise对象</h3>
 <p>Promise关键词：</p>
 <ul>
@@ -221,16 +233,16 @@
 <li>reject 预期结果失败</li>
 <li>then</li>
 </ul>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Promise结构</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =></span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_user_info.do'</span>,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">}).then(<span class="function">(<span class="params">res</span>) =></span> {</span><br><span class="line">    <span class="comment">//resolve</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success:'</span>, res);</span><br><span class="line">},(err) => {</span><br><span class="line">    <span class="comment">//reject</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success:'</span>, err);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Promise结构</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_user_info.do'</span>,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">}).then(<span class="function">(<span class="params">res</span>) =&gt;</span> {</span><br><span class="line">    <span class="comment">//resolve</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success:'</span>, res);</span><br><span class="line">},(err) =&gt; {</span><br><span class="line">    <span class="comment">//reject</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'success:'</span>, err);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
 <p>在没有使用Promise之前</p>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$.ajax({</span><br><span class="line">    url: <span class="string">'http://z.cn/user/get_user_info.do'</span>,</span><br><span class="line">    type: <span class="string">'post'</span>,</span><br><span class="line">    success(res){</span><br><span class="line">        $.ajax({</span><br><span class="line">            url: <span class="string">'http://z.cn/user/get_count.do'</span>,</span><br><span class="line">            type: <span class="string">'get'</span>,</span><br><span class="line">            success(res){</span><br><span class="line">                resolve(res);</span><br><span class="line">            },</span><br><span class="line">            error(err){</span><br><span class="line">                reject(err);</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">    },</span><br><span class="line">    error(err){</span><br><span class="line">        <span class="comment">//err</span></span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
 <p>使用Promise的链式请求</p>
-<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promiseFn1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =></span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_user_info.do'</span>,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"><span class="keyword">var</span> promiseFn2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =></span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_count.do'</span>,</span><br><span class="line">        type: <span class="string">'get'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">promiseFn1.then(<span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">    <span class="comment">//success</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn1 success'</span>);</span><br><span class="line">    <span class="keyword">return</span> promiseFn2;</span><br><span class="line">}).then(<span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn2 success'</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promiseFn1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_user_info.do'</span>,</span><br><span class="line">        type: <span class="string">'post'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"><span class="keyword">var</span> promiseFn2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">    <span class="comment">//异步函数</span></span><br><span class="line">    $.ajax({</span><br><span class="line">        url: <span class="string">'http://z.cn/user/get_count.do'</span>,</span><br><span class="line">        type: <span class="string">'get'</span>,</span><br><span class="line">        success(res){</span><br><span class="line">            resolve(res);</span><br><span class="line">        },</span><br><span class="line">        error(err){</span><br><span class="line">            reject(err);</span><br><span class="line">        }</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">promiseFn1.then(<span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">    <span class="comment">//success</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn1 success'</span>);</span><br><span class="line">    <span class="keyword">return</span> promiseFn2;</span><br><span class="line">}).then(<span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'promiseFn2 success'</span>);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="面向对象">面向对象</h3>
 <p>类</p>
 <ul>
 <li>关键词：class</li>
-<li>语法糖 -> 对应function</li>
+<li>语法糖 -&gt; 对应function</li>
 <li>构造函数，constructor</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>{</span><br><span class="line">    <span class="keyword">constructor</span>(age){</span><br><span class="line">        <span class="keyword">this</span>.name = <span class="string">'ani'</span>;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    }</span><br><span class="line">    getName(){</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">let</span> animal = <span class="keyword">new</span> Animal(<span class="string">'20'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(animal.getName()); <span class="comment">//ani20</span></span><br></pre></td></tr></tbody></table></figure>
@@ -256,9 +268,27 @@
 <p>index.js</p>
 <figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> {</span><br><span class="line">    str <span class="keyword">as</span> string,</span><br><span class="line">    obj,</span><br><span class="line">    fn</span><br><span class="line">} <span class="keyword">from</span> <span class="string">'./module.js'</span>;</span><br><span class="line"><span class="keyword">import</span> foo <span class="keyword">from</span> <span class="string">'./module.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'name:'</span>, obj.name);</span><br><span class="line"><span class="comment">// console.log('str:', str);</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'string:'</span>, string);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'fn:'</span>, fn);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(foo);</span><br></pre></td></tr></tbody></table></figure>
 <p>module.js</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'string'</span>;</span><br><span class="line"><span class="keyword">let</span> obj = {</span><br><span class="line">    name: <span class="string">'Jmeow'</span></span><br><span class="line">};</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'module test'</span>);</span><br><span class="line">};</span><br><span class="line"><span class="keyword">export</span> {</span><br><span class="line">    str,</span><br><span class="line">    obj,</span><br><span class="line">    fn</span><br><span class="line">}</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> {<span class="attr">a</span>:<span class="number">1</span>}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'string'</span>;</span><br><span class="line"><span class="keyword">let</span> obj = {</span><br><span class="line">    name: <span class="string">'Jmeow'</span></span><br><span class="line">};</span><br><span class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'module test'</span>);</span><br><span class="line">};</span><br><span class="line"><span class="keyword">export</span> {</span><br><span class="line">    str,</span><br><span class="line">    obj,</span><br><span class="line">    fn</span><br><span class="line">}</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> {<span class="attr">a</span>:<span class="number">1</span>}</span><br></pre></td></tr></tbody></table></figure>
 <p>index.html</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag"><<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>></span><span class="tag"><!--<span class="name"-->script</span>></span><br></pre></td></tr></tbody></table></figure><script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -302,16 +332,22 @@
 
 
 </div>
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <nav class="level">
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                        <img class="" src="/images/avatar.jpg" alt="Jmeow">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -340,7 +376,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            22
+                            40
                         </p>
                     </a>
                 </div>
@@ -380,25 +416,29 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BJ4501">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com/bj4501">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="tencent://message/?uin=3080293757">
                 
                 <i class="fab fa-qq"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="mailto:neko@jmeow.org">
                 
                 <i class="fas fa-envelope"></i>
                 
@@ -441,13 +481,36 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://runo.plus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">露诺的小窝</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">runo.plus</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rehtt.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Rehtt&#39;s Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rehtt.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
 </div>
 
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
@@ -455,23 +518,23 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Android/">
+        <a class="level is-marginless" href="/categories/android/">
             <span class="level-start">
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">23</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/">
+        <a class="level is-marginless" href="/categories/frontend/">
             <span class="level-start">
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Frontend/Css/">
+        <a class="level is-marginless" href="/categories/frontend/css/">
             <span class="level-start">
                 <span class="level-item">Css</span>
             </span>
@@ -479,7 +542,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+        <a class="level is-marginless" href="/categories/frontend/javascript/">
             <span class="level-start">
                 <span class="level-item">Javascript</span>
             </span>
@@ -487,15 +550,15 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Java/">
+        <a class="level is-marginless" href="/categories/java/">
             <span class="level-start">
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+        <a class="level is-marginless" href="/categories/java/algorithm/">
             <span class="level-start">
                 <span class="level-item">Algorithm</span>
             </span>
@@ -503,7 +566,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/Basic/">
+        <a class="level is-marginless" href="/categories/java/basic/">
             <span class="level-start">
                 <span class="level-item">Basic</span>
             </span>
@@ -511,23 +574,23 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+        <a class="level is-marginless" href="/categories/java/javaweb/">
             <span class="level-start">
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Other/">
+        <a class="level is-marginless" href="/categories/other/">
             <span class="level-start">
                 <span class="level-item">Other</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+        <a class="level is-marginless" href="/categories/daily/">
             <span class="level-start">
                 <span class="level-item">日常</span>
             </span>
@@ -545,7 +608,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -561,12 +624,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -577,7 +772,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -653,7 +848,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -674,7 +869,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -688,7 +883,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -757,7 +952,12 @@
     
 </div>
 
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -768,12 +968,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -784,7 +1116,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -860,7 +1192,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -881,7 +1213,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -895,7 +1227,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -977,12 +1309,13 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                © 2020 JmeowTechnology 
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                &copy; 2022 JmeowTechnology&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
                 <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_container_site_pv">
+                共<span id="busuanzi_value_site_pv">0</span>次访问
                 </span>
                 
                 </p>
@@ -1026,7 +1359,20 @@
 <script>moment.locale("zh-CN");</script>
 
 
-<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.jmeow.org',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
@@ -1034,11 +1380,14 @@
 
 
 
+
 <script src="/js/animation.js"></script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
 
 
 
@@ -1046,18 +1395,48 @@
     <h6>Your browser is out-of-date!</h6>
     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
             my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
 
 <a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
+<script src="/js/back-to-top.js" defer></script>
 
 
 
@@ -1072,14 +1451,13 @@
 
 
 
-
-
+<script src="/js/main.js" defer></script>
 
     
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1087,10 +1465,24 @@
         </div>
     </div>
 </div>
-<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
-
-
-
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
-
-<script src="/js/bundle.js" defer></script></body></html>
+</body>
+</html>

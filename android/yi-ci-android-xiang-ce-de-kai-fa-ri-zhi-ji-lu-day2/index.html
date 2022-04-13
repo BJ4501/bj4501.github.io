@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>一次Android相册的开发日志记录 Day2 - JmeowTechnology</title>
+
+
+    <meta name="description" content="初步定好方案之后，我们先来实现一个基本的相册app。 一个基本的相册APP总共由3个页面构成：  相册文件夹页面 照片列表页 照片详情页  在页面展示之前，首先我们要能拿到数据，这里我们使用MediaStore来获取用户的媒体信息。 MediaStore记录了用户的各种类型的文件位置，并保存到数据库中名称为external.db。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次Android相册的开发日志记录 Day2">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;android&#x2F;yi-ci-android-xiang-ce-de-kai-fa-ri-zhi-ji-lu-day2&#x2F;index.html">
+<meta property="og:site_name" content="JmeowTechnology">
+<meta property="og:description" content="初步定好方案之后，我们先来实现一个基本的相册app。 一个基本的相册APP总共由3个页面构成：  相册文件夹页面 照片列表页 照片详情页  在页面展示之前，首先我们要能拿到数据，这里我们使用MediaStore来获取用户的媒体信息。 MediaStore记录了用户的各种类型的文件位置，并保存到数据库中名称为external.db。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2022-04-13T16:48:58.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            <!-- Logo 暂时禁用，有Logo再换上 -->
+            <!-- 
+                <img src="/images/logo.svg" alt="一次Android相册的开发日志记录 Day2" height="28">
+             -->
+                JmeowTechnology
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-09-17T02:47:11.000Z">2021-09-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 分钟 读完 (大约 2846 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                一次Android相册的开发日志记录 Day2
+            
+        </h1>
+        <div class="content">
+            <p>初步定好方案之后，我们先来实现一个基本的相册app。<br>
+一个基本的相册APP总共由3个页面构成：</p>
+<ul>
+<li>相册文件夹页面</li>
+<li>照片列表页</li>
+<li>照片详情页</li>
+</ul>
+<p>在页面展示之前，首先我们要能拿到数据，这里我们使用MediaStore来获取用户的媒体信息。<br>
+MediaStore记录了用户的各种类型的文件位置，并保存到数据库中名称为<code>external.db</code>。</p>
+<a id="more"></a>
+<h3 id="权限的获取">权限的获取</h3>
+<p>第一步要在Manifest中申请访问媒体数据和操作本地数据的权限。<br>
+且操作本地文件的权限，在Android11以后，由于应用沙箱的限制，该权限需要动态申请。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>动态获取权限</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PERMISSION_REQ_NO = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {</span><br><span class="line">    <span class="keyword">if</span> (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {</span><br><span class="line">        requestPermissions(<span class="keyword">new</span> String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQ_NO);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="使用MediaStore获取照片信息">使用MediaStore获取照片信息</h3>
+<p>实际上依赖的就是我们平常用的比较少的四大组件之一，ContentProvider，这里使用的是ContentResolver来获取一个媒体的Cursor。<br>
+通过操作这个Cursor就可以获取照片信息了，看写法可以看出来，实际类似数据库的查询操作。<br>
+<code>getContentResolver().query()</code>他有着五个参数，分别为：</p>
+<ul>
+<li>操作的URI，这里是ImageUri, MediaStore.Images.Media.EXTERNAL_CONTENT_URI</li>
+<li>QueryType，查询的数据字段，这里使用一个String数组来记录要查询的字段名，具体可以查询的字段为MediaStore.Images.Media中的常量，有需要可以点进去看看。我这里常用的几个字段如下：
+<ul>
+<li>MediaStore.Images.Media._ID : ID</li>
+<li>MediaStore.Images.Media.DATA : 文件路径</li>
+<li>MediaStore.Images.Media.DISPLAY_NAME : 文件名</li>
+<li>MediaStore.Images.Media.BUCKET_DISPLAY_NAME : 相册名</li>
+<li>MediaStore.Images.Media.BUCKET_ID : 相册ID</li>
+<li>MediaStore.Images.Media.DATE_ADDED : 添加时间</li>
+</ul>
+</li>
+<li>Selection，查询条件</li>
+<li>SelectionArgs，查询条件的参数</li>
+<li>Order，排序方式</li>
+</ul>
+<p>通过query获取到Cursor之后，就可以通过ID获取index索引id去操作游标来查询数据了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getLocalAlbum</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">//sdcard下的多媒体文件</span></span><br><span class="line">    Uri uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询字段</span></span><br><span class="line">    String[] queryType = <span class="keyword">new</span> String[]{</span><br><span class="line">            MediaStore.Images.Media._ID,</span><br><span class="line">            MediaStore.Images.Media.DATA,</span><br><span class="line">            MediaStore.Images.Media.DISPLAY_NAME,</span><br><span class="line">            MediaStore.Images.Media.BUCKET_DISPLAY_NAME,</span><br><span class="line">            MediaStore.Images.Media.BUCKET_ID,</span><br><span class="line">            MediaStore.Images.Media.DATE_ADDED</span><br><span class="line">    };</span><br><span class="line">    <span class="comment">//查询条件</span></span><br><span class="line">    String selection = MediaStore.Images.Media.DISPLAY_NAME + <span class="string">"= ?"</span>;</span><br><span class="line">    <span class="comment">//排序</span></span><br><span class="line">    String order = MediaStore.Files.FileColumns._ID + <span class="string">" DESC"</span>;</span><br><span class="line"></span><br><span class="line">    Cursor cursor = getContentResolver().query(uri, queryType, selection, <span class="keyword">null</span>, order);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (cursor != <span class="keyword">null</span>) {</span><br><span class="line">        <span class="comment">//列Index</span></span><br><span class="line">        <span class="keyword">int</span> idIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID);</span><br><span class="line">        <span class="keyword">int</span> dataIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);</span><br><span class="line">        <span class="keyword">int</span> displayNameIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DISPLAY_NAME);</span><br><span class="line">        <span class="keyword">int</span> bucketNameIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.BUCKET_DISPLAY_NAME);</span><br><span class="line">        <span class="keyword">int</span> bucketIdIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.BUCKET_ID);</span><br><span class="line">        <span class="keyword">int</span> dateAddedIndex = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATE_ADDED);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//循环遍历取出，直到取完</span></span><br><span class="line">        <span class="keyword">while</span> (cursor.moveToNext()) {</span><br><span class="line">            <span class="keyword">long</span> id = cursor.getLong(idIndex);</span><br><span class="line">            <span class="comment">//Uri</span></span><br><span class="line">            Uri imageUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id);</span><br><span class="line">            String path = cursor.getString(dataIndex);</span><br><span class="line">            String displayName = cursor.getString(displayNameIndex);</span><br><span class="line">            String bucketName = cursor.getString(bucketNameIndex);</span><br><span class="line">            String bucketId = cursor.getString(bucketIdIndex);</span><br><span class="line">            Integer dateAdded = cursor.getInt(dateAddedIndex);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//记得关闭Cursor</span></span><br><span class="line">    cursor.close();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这里省略了获取照片数据后，封装和组合的操作，可以将这里的数据封装为对象，就可以在页面间传递和操作了。<br>
+这里的数据也是相册可以看到的媒体数据了。不过要注意的是URI传递需要他的对象为实现了Parcelable序列化才可传递。<br>
+如果想使用Serializable或者其他方式，可以将<code>Uri.toString()</code>转换为String之后再进行传递，收到后再按需parse即可。</p>
+<hr>
+<p>获取了相册信息之后，就可以编写页面了。常规的RecyclerView和基础布局的设计就不在这里赘述了，说点新鲜的。</p>
+<h3 id="支持圆角，且宽高比固定的ImageView">支持圆角，且宽高比固定的ImageView</h3>
+<p>参考了很多的相册APP，他们都有个共同的特典，就是每个相册是宽高比固定1:1或者其他比例。在布局中设定了占满宽度并均分之后，不同比例的图片会导致每个ImageView的高度不同，要保证宽高1:1则需要对ImageView的测量进行调整。在onMeasure里对图片进行测量并将宽高调整为相同或需要的比例。同时<code>android:scaleType="centerCrop"</code>保证了图片会横向占满，并自动调整高度。这样显示的效果就很不错了。当按照网格排布时，宽高也是可以自适应的。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>{</span><br><span class="line">    <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">    <span class="keyword">int</span> width = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">    setMeasuredDimension(width, width);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>为了使得页面看起来美观，我们要对图片做圆角切割。比起直接操作Bitmap会存在潜在的泄露风险，这里使用canvas的clipPath对图形进行裁剪即可。<br>
+clipPath会按照指定的路径，对图片进行裁剪遮罩，非常方便。同时可以封装为参数，对圆角的大小在布局中进行自定义的调整。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> left, <span class="keyword">int</span> top, <span class="keyword">int</span> right, <span class="keyword">int</span> bottom)</span> </span>{</span><br><span class="line">    <span class="keyword">super</span>.onLayout(changed, left, top, right, bottom);</span><br><span class="line">    width = getWidth();</span><br><span class="line">    height = getHeight();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>{</span><br><span class="line">    <span class="comment">//这里做下判断，只有图片的宽高大于设置的圆角距离的时候才进行裁剪</span></span><br><span class="line">    <span class="keyword">int</span> maxLeft = Math.max(leftTopRadius, leftBottomRadius);</span><br><span class="line">    <span class="keyword">int</span> maxRight = Math.max(rightTopRadius, rightBottomRadius);</span><br><span class="line">    <span class="keyword">int</span> minWidth = maxLeft + maxRight;</span><br><span class="line">    <span class="keyword">int</span> maxTop = Math.max(leftTopRadius, rightTopRadius);</span><br><span class="line">    <span class="keyword">int</span> maxBottom = Math.max(leftBottomRadius, rightBottomRadius);</span><br><span class="line">    <span class="keyword">int</span> minHeight = maxTop + maxBottom;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (width &gt;= minWidth &amp;&amp; height &gt; minHeight) {</span><br><span class="line">        <span class="comment">//四个角：右上，右下，左下，左上</span></span><br><span class="line">        mPath.moveTo(leftTopRadius, <span class="number">0</span>);</span><br><span class="line">        mPath.lineTo(width - rightTopRadius, <span class="number">0</span>);</span><br><span class="line">        mPath.quadTo(width, <span class="number">0</span>, width, rightTopRadius);</span><br><span class="line"></span><br><span class="line">        mPath.lineTo(width, height - rightBottomRadius);</span><br><span class="line">        mPath.quadTo(width, height, width - rightBottomRadius, height);</span><br><span class="line"></span><br><span class="line">        mPath.lineTo(leftBottomRadius, height);</span><br><span class="line">        mPath.quadTo(<span class="number">0</span>, height, <span class="number">0</span>, height - leftBottomRadius);</span><br><span class="line"></span><br><span class="line">        mPath.lineTo(<span class="number">0</span>, leftTopRadius);</span><br><span class="line">        mPath.quadTo(<span class="number">0</span>, <span class="number">0</span>, leftTopRadius, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        canvas.clipPath(mPath);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">super</span>.onDraw(canvas);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>注意：clipPath如果使用硬件加速，在老设备上可能会出现显示不正常的情况。<br>
+这时可以开启<code>setLayerType(View.LAYER_TYPE_SOFTWARE, null)</code>来关闭硬件加速。</p>
+<hr>
+<p>接下来编写的是点击相册进入的，该相册下的图片列表页。</p>
+<p>这里依旧使用GridLayoutManager进行网格布局，讲图片按照一定列数进行排布，但是图片与图片的间隙该如何处理，我想要两侧不留白，但是图片之间还要有缝隙怎么办。这里就可以使用ItemDecoration来设置网格布局的间隔。</p>
+<h3 id="ItemDecoration设置间隔">ItemDecoration设置间隔</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridSpacingItemDecoration</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ItemDecoration</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> spanCount; <span class="comment">//列数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> spacing; <span class="comment">//间隔</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> includeEdge; <span class="comment">//是否包含边缘</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GridSpacingItemDecoration</span><span class="params">(<span class="keyword">int</span> spanCount, <span class="keyword">int</span> spacing, <span class="keyword">boolean</span> includeEdge)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.spanCount = spanCount;</span><br><span class="line">        <span class="keyword">this</span>.spacing = spacing;</span><br><span class="line">        <span class="keyword">this</span>.includeEdge = includeEdge;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getItemOffsets</span><span class="params">(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)</span> </span>{</span><br><span class="line"></span><br><span class="line">        <span class="comment">//这里是关键，需要根据你有几列来判断</span></span><br><span class="line">        <span class="keyword">int</span> position = parent.getChildAdapterPosition(view); <span class="comment">// item position</span></span><br><span class="line">        <span class="keyword">int</span> column = position % spanCount; <span class="comment">// item column</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (includeEdge) {</span><br><span class="line">            outRect.left = spacing - column * spacing / spanCount; <span class="comment">// spacing - column * ((1f / spanCount) * spacing)</span></span><br><span class="line">            outRect.right = (column + <span class="number">1</span>) * spacing / spanCount; <span class="comment">// (column + 1) * ((1f / spanCount) * spacing)</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (position &lt; spanCount) { <span class="comment">// top edge</span></span><br><span class="line">                outRect.top = spacing;</span><br><span class="line">            }</span><br><span class="line">            outRect.bottom = spacing; <span class="comment">// item bottom</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            outRect.left = column * spacing / spanCount; <span class="comment">// column * ((1f / spanCount) * spacing)</span></span><br><span class="line">            outRect.right = spacing - (column + <span class="number">1</span>) * spacing / spanCount; <span class="comment">// spacing - (column + 1) * ((1f /    spanCount) * spacing)</span></span><br><span class="line">            <span class="keyword">if</span> (position &gt;= spanCount) {</span><br><span class="line">                outRect.top = spacing; <span class="comment">// item top</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>使用方法：为RecyclerView设置<code>addItemDecoration</code>即可。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mBinding.recyclerView.addItemDecoration(</span><br><span class="line">    <span class="keyword">new</span> GridSpacingItemDecoration(<span class="number">4</span>, DisplayUtils.dp2px(getContext(), <span class="number">2.5f</span>), <span class="keyword">false</span>));</span><br></pre></td></tr></tbody></table></figure>
+<hr>
+<p>好了，接下来要编写点击单个图片进入的图片详情页了。</p>
+<h3 id="详情页的编写">详情页的编写</h3>
+<p>详情页最主要的就是可以放大缩小的图片View了，这里使用了比较常用的控件PhotoView。<br>
+GitHub地址为：<a href="https://github.com/Baseflow/PhotoView">https://github.com/Baseflow/PhotoView</a><br>
+按照官方的说明，进行库的添加即可，注意需要引入Jetpack源。</p>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.github.Baseflow:PhotoView:2.3.0'</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="全屏与沉浸模式">全屏与沉浸模式</h3>
+<p>仔细观察我们常见的相册应用，可以发现一般相册应用都会提供点击隐藏系统UI的功能，方便用户无干扰的查看图片，这里就需要使用到全屏和沉浸模式了。</p>
+<p>首先定义一个主题，将状态栏和导航栏的底部都设置为透明，由于预览页面底色为黑色，所以将状态栏的颜色模式设置为黑。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"Theme.PureGallery.ImageView"</span> <span class="attr">parent</span>=<span class="string">"Theme.MaterialComponents.DayNight.NoActionBar"</span>&gt;</span></span><br><span class="line"><span class="xml">    <span class="comment">&lt;!-- 其余设置略. --&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentStatus"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowTranslucentNavigation"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowLightStatusBar"</span> <span class="attr">tools:targetApi</span>=<span class="string">"m"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>定义完毕主题之后，在<code>AndroidManifest.xml</code>文件中对Activity设置主题即可。</p>
+<p>接下来我们可以看一下关于沉浸模式的说明，这里其实官方手册中描述的十分清楚，<br>
+参考地址：<a href="https://developer.android.com/training/system-ui/immersive">https://developer.android.com/training/system-ui/immersive</a></p>
+<p>但是对于这些参数的含义可能还会有点模糊，这里记录一下。并编辑好工具类，可以在需要的时候隐藏系统UI。</p>
+<ul>
+<li><code>View.SYSTEM_UI_FLAG_LAYOUT_STABLE</code>：保证布局UI不会因为系统StatusBar显示隐藏发生变化，配合SYSTEM_UI_FLAG_FULLSCREEN使用</li>
+<li><code>View.SYSTEM_UI_FLAG_FULLSCREEN</code>：进入全屏模式，隐藏状态栏，高度不变</li>
+<li><code>View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</code>：视图延伸至状态栏区域，状态栏覆盖在视图之上（等同windowTranslucentStatus）</li>
+<li><code>View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</code>：视图延伸至导航栏区域，导航栏覆盖在视图之上（等同windowTranslucentNavigation）</li>
+<li><code>View.SYSTEM_UI_FLAG_IMMERSIVE</code>：沉浸模式，配合 View.SYSTEM_UI_FLAG_FULLSCREEN 和 View.SYSTEM_UI_FLAG_HIDE_NAVIGATION 一起设置</li>
+<li><code>View.SYSTEM_UI_FLAG_HIDE_NAVIGATION</code>：隐藏导航栏</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FullScreenUtils</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hideSystemUI</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        <span class="comment">// Enables regular immersive mode.</span></span><br><span class="line">        <span class="comment">// For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.</span></span><br><span class="line">        <span class="comment">// Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY</span></span><br><span class="line">        View decorView = activity.getWindow().getDecorView();</span><br><span class="line">        decorView.setSystemUiVisibility(</span><br><span class="line">                View.SYSTEM_UI_FLAG_LAYOUT_STABLE</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_IMMERSIVE</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_FULLSCREEN);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Shows the system bars by removing all the flags</span></span><br><span class="line">    <span class="comment">// except for the ones that make the content appear under the system bars.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showSystemUI</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        View decorView = activity.getWindow().getDecorView();</span><br><span class="line">        decorView.setSystemUiVisibility(</span><br><span class="line">                View.SYSTEM_UI_FLAG_LAYOUT_STABLE</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span><br><span class="line">                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="全面屏黑条问题">全面屏黑条问题</h3>
+<p>本来已经完美实现了要求，但是测试机是小米6，在全面屏的手机上就发现，每次在全屏模式切换下，状态栏都有一个黑条，并且布局会发生抖动。<br>
+一瞬间就想到，有可能是全面屏适配的问题，通过查询得知，就是如此。解决方法也很简单，在主题中添加一个选项即可。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowLayoutInDisplayCutoutMode"</span> <span class="attr">tools:targetApi</span>=<span class="string">"o_mr1"</span>&gt;</span>shortEdges<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>参数中有三个选项，含义分别为：</p>
+<ul>
+<li><code>SHORT_EDGES</code>：该窗口始终允许延伸到屏幕短边上的DisplayCutout区域</li>
+<li><code>NEVER</code>：窗口不允许和刘海屏重叠</li>
+<li><code>DEFAULT</code>：默认情况下，全屏窗口不会使用到刘海区域，非全屏窗口可正常使用刘海区</li>
+</ul>
+<p>添加了参数选项后，黑条就消失了，布局也不会发生跳动，按照设计要求正常实现了。</p>
+<p>经过上面这么一折腾，一个只有浏览功能的，最基础的相册APP就完成了。那么接下来需要要做什么呢，可以选择接入网络功能，或者完善本地功能。</p>
+<ol>
+<li>本地相册的数据库管理</li>
+<li>相册的创建，删除，修改</li>
+<li>删除照片与移动照片</li>
+<li>页面基础菜单，设置页面，导航条</li>
+<li>分享功能，可以使用系统官方分享组件</li>
+<li>照片的详细信息浏览，分辨率Exif等</li>
+<li>可以考虑一下收藏功能</li>
+<li>调用第三方播放器来播放视频</li>
+</ol>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.csdn.net/Grekit_Sun/article/details/114404269">https://blog.csdn.net/Grekit_Sun/article/details/114404269</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/" rel="tag">Android</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/other/guan-yu-ruan-jian-geng-xin-na-xie-shi/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">关于软件更新那些事</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/android/yi-ci-android-xiang-ce-de-kai-fa-ri-zhi-ji-lu-day1/">
+                <span class="level-item">一次Android相册的开发日志记录 Day1</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.jpg" alt="Jmeow">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Jmeow
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Moon, Solar System</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            40
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            10
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/BJ4501" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BJ4501">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com/bj4501">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="tencent://message/?uin=3080293757">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="mailto:neko@jmeow.org">
+                
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://mengclaw.com/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">萌爪实验室</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">mengclaw.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://furryfan.cn" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Furley</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">furryfan.cn</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://runo.plus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">露诺的小窝</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">runo.plus</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rehtt.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Rehtt&#39;s Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rehtt.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/android/">
+            <span class="level-start">
+                <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/frontend/">
+            <span class="level-start">
+                <span class="level-item">Frontend</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/frontend/css/">
+            <span class="level-start">
+                <span class="level-item">Css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/frontend/javascript/">
+            <span class="level-start">
+                <span class="level-item">Javascript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/java/algorithm/">
+            <span class="level-start">
+                <span class="level-item">Algorithm</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/java/basic/">
+            <span class="level-start">
+                <span class="level-item">Basic</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/java/javaweb/">
+            <span class="level-start">
+                <span class="level-item">JavaWeb</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/other/">
+            <span class="level-start">
+                <span class="level-item">Other</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/daily/">
+            <span class="level-start">
+                <span class="level-item">日常</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">23</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Android/">
+                        <span class="tag">Android</span>
+                        <span class="tag is-grey">23</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSS/">
+                        <span class="tag">CSS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ES6/">
+                        <span class="tag">ES6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Frontend/">
+                        <span class="tag">Frontend</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HTML5/">
+                        <span class="tag">HTML5</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Javascript/">
+                        <span class="tag">Javascript</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Redis/">
+                        <span class="tag">Redis</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Socket/">
+                        <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ThreadLocal/">
+                        <span class="tag">ThreadLocal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Tools/">
+                        <span class="tag">Tools</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%97%A5%E5%B8%B8/">
+                        <span class="tag">日常</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="tag">算法</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- Logo 暂时禁用，有Logo再换上 -->
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="一次Android相册的开发日志记录 Day2" height="28">
+                
+                </a> -->
+                <p class="is-size-7">
+                &copy; 2022 JmeowTechnology&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_pv">
+                共<span id="busuanzi_value_site_pv">0</span>次访问
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/BJ4501">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.jmeow.org',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

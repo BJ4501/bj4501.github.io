@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
 
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.0.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <title>使用RedisTemplate操作Redis - JmeowTechnology</title>
 
@@ -12,14 +14,14 @@
 <meta name="keywords" content="Java,Redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用RedisTemplate操作Redis">
-<meta property="og:url" content="http://www.jmeow.org/java/javaweb/shi-yong-redistemplate-cao-zuo-redis/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;java&#x2F;javaweb&#x2F;shi-yong-redistemplate-cao-zuo-redis&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
 <meta property="og:description" content="使用RedisTemplate操作Redis  补充：List,Set,Map 区别  List,Set都继承自Collection接口，Map不是 List特点：元素有放入顺序，元素可以重复 Set特点：元素无放入顺序，元素不可重复，重复元素会被覆盖。  (元素虽然放入无顺序，但是元素在set中的位置是由该元素的HashCode决定的，其位置其实是固定的)   Map特点：适合存储键值对的数据">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
-<meta property="og:updated_time" content="2020-04-14T03:34:40.799Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2022-04-13T16:48:59.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -31,25 +33,29 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
     
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
     
     
     
     
+<link rel="stylesheet" href="/css/back-to-top.css">
 
     
     
@@ -58,16 +64,16 @@
     
     
     
-    
+    <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
 <link rel="stylesheet" href="/css/style.css">
-
-
+</head>
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -83,15 +89,20 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives">Archives</a>
+                <a class="navbar-item"
+                href="/archives">Archives</a>
                 
-                <a class="navbar-item" href="/categories">Categories</a>
+                <a class="navbar-item"
+                href="/categories">Categories</a>
                 
-                <a class="navbar-item" href="/tags">Tags</a>
+                <a class="navbar-item"
+                href="/tags">Tags</a>
                 
-                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item"
+                href="/about">About</a>
                 
             </div>
             
@@ -119,7 +130,8 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
     <div class="card-content article ">
         
@@ -128,7 +140,7 @@
                 <time class="level-item has-text-grey" datetime="2018-11-06T09:27:56.000Z">2018-11-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java/">Java</a> / <a class="has-link-grey -link" href="/categories/Java/JavaWeb/">JavaWeb</a>
+                <a class="has-link-grey -link" href="/categories/java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/java/javaweb/">JavaWeb</a>
                 </div>
                 
                 
@@ -172,11 +184,29 @@
 <ul>
 <li>Redis配置：spring-redis.xml</li>
 </ul>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"><!--?xml version="1.0" encoding="UTF-8"?--></span></span><br><span class="line"><span class="tag"><<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>></span></span><br><span class="line"></span><br><span class="line">    <span class="comment"><!--    jedis-2.7.2.jar 依赖jar包 commons-pool2-2.3.jar</span></span><br><span class="line"><span class="comment">            jedis基于 commons-pool2-2.3.jar 自己实现了一个资源池。</span></span><br><span class="line"><span class="comment">            配置参数 详见 http://blog.csdn.net/liang_love_java/article/details/50510753</span></span><br><span class="line"><span class="comment">    --></span></span><br><span class="line"></span><br><span class="line">    <span class="tag"><<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>></span></span><br><span class="line">        <span class="comment"><!--maxIdle 最大空闲资源数，默认值 8 （int类型）--></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"1"</span> /></span></span><br><span class="line">        <span class="comment"><!--maxTotal 允许创建资源的最大数量，默认值 8，-1 代表无数量限制（int类型）--></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"5"</span> /></span></span><br><span class="line">        <span class="comment"><!--blockWhenExhausted 默认值 true ，当资源耗尽时，是否阻塞等待获取资源--></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"true"</span> /></span></span><br><span class="line">        <span class="comment"><!--maxWaitMillis 获取资源时的等待时间，单位毫秒。当 blockWhenExhausted 配置为 true 时，</span></span><br><span class="line"><span class="comment">        此值有效。 -1 代表无时间限制，一直阻塞直到有可用的资源。（long类型）--></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span> /></span></span><br><span class="line">        <span class="comment"><!--testOnBorrow 默认值 false ，当设置为true时，</span></span><br><span class="line"><span class="comment">        每次从池中获取资源时都会调用 factory.validateObject() 方法 --></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /></span></span><br><span class="line">    <span class="tag"><!--<span class="name"-->bean</span>></span><br><span class="line">    <span class="tag"><<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisConnectionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.connection.jedis.JedisConnectionFactory"</span>></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hostName"</span> <span class="attr">value</span>=<span class="string">"127.0.0.1"</span> /></span></span><br><span class="line">        <span class="comment"><!--property name="hostName" value="10.1.8.200" /--></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"6379"</span>/></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolConfig"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span> /></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"usePool"</span> <span class="attr">value</span>=<span class="string">"true"</span>/></span></span><br><span class="line">    <span class="tag"><!--<span class="name"-->bean</span>></span><br><span class="line">    <span class="tag"><<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"redisTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.core.RedisTemplate"</span>></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectionFactory"</span>   <span class="attr">ref</span>=<span class="string">"jedisConnectionFactory"</span> /></span></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"keySerializer"</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.StringRedisSerializer"</span> /></span></span><br><span class="line">        <span class="tag"><!--<span class="name"-->property</span>></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"valueSerializer"</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"</span> /></span></span><br><span class="line">        <span class="tag"><!--<span class="name"-->property</span>></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hashKeySerializer"</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.StringRedisSerializer"</span>/></span></span><br><span class="line">        <span class="tag"><!--<span class="name"-->property</span>></span><br><span class="line">        <span class="tag"><<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hashValueSerializer"</span>></span></span><br><span class="line">            <span class="tag"><<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"</span>/></span></span><br><span class="line">        <span class="tag"><!--<span class="name"-->property</span>></span><br><span class="line">    <span class="tag"><!--<span class="name"-->bean</span>></span><br><span class="line"><span class="tag"><!--<span class="name"-->beans</span>></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--    jedis-2.7.2.jar 依赖jar包 commons-pool2-2.3.jar</span></span><br><span class="line"><span class="comment">            jedis基于 commons-pool2-2.3.jar 自己实现了一个资源池。</span></span><br><span class="line"><span class="comment">            配置参数 详见 http://blog.csdn.net/liang_love_java/article/details/50510753</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisPoolConfig"</span> <span class="attr">class</span>=<span class="string">"redis.clients.jedis.JedisPoolConfig"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--maxIdle 最大空闲资源数，默认值 8 （int类型）--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--maxTotal 允许创建资源的最大数量，默认值 8，-1 代表无数量限制（int类型）--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxTotal"</span> <span class="attr">value</span>=<span class="string">"5"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--blockWhenExhausted 默认值 true ，当资源耗尽时，是否阻塞等待获取资源--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blockWhenExhausted"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--maxWaitMillis 获取资源时的等待时间，单位毫秒。当 blockWhenExhausted 配置为 true 时，</span></span><br><span class="line"><span class="comment">        此值有效。 -1 代表无时间限制，一直阻塞直到有可用的资源。（long类型）--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWaitMillis"</span> <span class="attr">value</span>=<span class="string">"30000"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--testOnBorrow 默认值 false ，当设置为true时，</span></span><br><span class="line"><span class="comment">        每次从池中获取资源时都会调用 factory.validateObject() 方法 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jedisConnectionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.connection.jedis.JedisConnectionFactory"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hostName"</span> <span class="attr">value</span>=<span class="string">"127.0.0.1"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--property name="hostName" value="10.1.8.200" /--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"port"</span> <span class="attr">value</span>=<span class="string">"6379"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"poolConfig"</span> <span class="attr">ref</span>=<span class="string">"jedisPoolConfig"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"usePool"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"redisTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.core.RedisTemplate"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectionFactory"</span>   <span class="attr">ref</span>=<span class="string">"jedisConnectionFactory"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"keySerializer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.StringRedisSerializer"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"valueSerializer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hashKeySerializer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.StringRedisSerializer"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hashValueSerializer"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>Demo</li>
 </ul>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Neko on 2017/11/7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        ClassPathXmlApplicationContext ctx = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-redis.xml"</span>);</span><br><span class="line">        <span class="keyword">final</span> RedisTemplate<string,object> redisTemplate = ctx.getBean(<span class="string">"redisTemplate"</span>,RedisTemplate.class);</string,object></span><br><span class="line">        <span class="comment">//添加一个key</span></span><br><span class="line">        ValueOperations<string,object> value = redisTemplate.opsForValue();</string,object></span><br><span class="line">        value.set(<span class="string">"key1"</span>,<span class="string">"HELLO!!"</span>);</span><br><span class="line">        <span class="comment">//获取这个Key的值</span></span><br><span class="line">        System.out.println(value.get(<span class="string">"key1"</span>));</span><br><span class="line">		</span><br><span class="line">        <span class="comment">//添加一个Hash集合</span></span><br><span class="line">        <span class="comment">//HashOperations<key,hashkey,value></key,hashkey,value></span></span><br><span class="line">        <span class="comment">//key用来区分是来自哪个HashMap</span></span><br><span class="line">        <span class="comment">//hashkey是HashMap中的key</span></span><br><span class="line">        HashOperations<string,object,object> hash = redisTemplate.opsForHash();</string,object,object></span><br><span class="line">        Map<string,object> map1 = <span class="keyword">new</span> HashMap<string,object>();</string,object></string,object></span><br><span class="line">        Map<string,object> map2 = <span class="keyword">new</span> HashMap<string,object>();</string,object></string,object></span><br><span class="line">        map1.put(<span class="string">"name"</span>,<span class="string">"Apple"</span>);</span><br><span class="line">        map1.put(<span class="string">"age"</span>,<span class="string">"40"</span>);</span><br><span class="line">        map2.put(<span class="string">"name"</span>,<span class="string">"Orange"</span>);</span><br><span class="line">        map2.put(<span class="string">"age"</span>,<span class="string">"60"</span>);</span><br><span class="line">        hash.putAll(<span class="string">"map1"</span>,map1);</span><br><span class="line">        hash.putAll(<span class="string">"map2"</span>,map2);</span><br><span class="line">        <span class="comment">//获取map</span></span><br><span class="line">        System.out.println(<span class="string">"MAP1:  "</span>+hash.entries(<span class="string">"map1"</span>));</span><br><span class="line">        System.out.println(<span class="string">"MAP2:  "</span>+hash.entries(<span class="string">"map2"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加一个list列表</span></span><br><span class="line">        ListOperations<string,object> list = redisTemplate.opsForList();</string,object></span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        <span class="comment">//输出list</span></span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist1"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist2"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist3"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist3"</span>,<span class="number">0</span>,<span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加一个set集合</span></span><br><span class="line">        SetOperations<string,object> set = redisTemplate.opsForSet();</string,object></span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"Apple"</span>);</span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"13"</span>);</span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"13"</span>);<span class="comment">//由于是集合，相同的元素会覆盖掉</span></span><br><span class="line">        <span class="comment">//输出set集合</span></span><br><span class="line">        System.out.println(set.members(<span class="string">"opSet"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加有序的set集合</span></span><br><span class="line">        ZSetOperations<string,object> zset = redisTemplate.opsForZSet();</string,object></span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Apple"</span>,<span class="number">2</span>);</span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Orange"</span>,<span class="number">0</span>);</span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Banana"</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="comment">//输出有序set集合</span></span><br><span class="line">        System.out.println(zset.rangeByScore(<span class="string">"opZset"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Neko on 2017/11/7.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        ClassPathXmlApplicationContext ctx = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring-redis.xml"</span>);</span><br><span class="line">        <span class="keyword">final</span> RedisTemplate&lt;String,Object&gt; redisTemplate = ctx.getBean(<span class="string">"redisTemplate"</span>,RedisTemplate.class);</span><br><span class="line">        <span class="comment">//添加一个key</span></span><br><span class="line">        ValueOperations&lt;String,Object&gt; value = redisTemplate.opsForValue();</span><br><span class="line">        value.set(<span class="string">"key1"</span>,<span class="string">"HELLO!!"</span>);</span><br><span class="line">        <span class="comment">//获取这个Key的值</span></span><br><span class="line">        System.out.println(value.get(<span class="string">"key1"</span>));</span><br><span class="line">		</span><br><span class="line">        <span class="comment">//添加一个Hash集合</span></span><br><span class="line">        <span class="comment">//HashOperations&lt;Key,hashkey,value&gt;</span></span><br><span class="line">        <span class="comment">//key用来区分是来自哪个HashMap</span></span><br><span class="line">        <span class="comment">//hashkey是HashMap中的key</span></span><br><span class="line">        HashOperations&lt;String,Object,Object&gt; hash = redisTemplate.opsForHash();</span><br><span class="line">        Map&lt;String,Object&gt; map1 = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">        Map&lt;String,Object&gt; map2 = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">        map1.put(<span class="string">"name"</span>,<span class="string">"Apple"</span>);</span><br><span class="line">        map1.put(<span class="string">"age"</span>,<span class="string">"40"</span>);</span><br><span class="line">        map2.put(<span class="string">"name"</span>,<span class="string">"Orange"</span>);</span><br><span class="line">        map2.put(<span class="string">"age"</span>,<span class="string">"60"</span>);</span><br><span class="line">        hash.putAll(<span class="string">"map1"</span>,map1);</span><br><span class="line">        hash.putAll(<span class="string">"map2"</span>,map2);</span><br><span class="line">        <span class="comment">//获取map</span></span><br><span class="line">        System.out.println(<span class="string">"MAP1:  "</span>+hash.entries(<span class="string">"map1"</span>));</span><br><span class="line">        System.out.println(<span class="string">"MAP2:  "</span>+hash.entries(<span class="string">"map2"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加一个list列表</span></span><br><span class="line">        ListOperations&lt;String,Object&gt; list = redisTemplate.opsForList();</span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist1"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        <span class="comment">//输出list</span></span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist1"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist2"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist2"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.rightPush(<span class="string">"oplist3"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist3"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"1st"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"2nd"</span>);</span><br><span class="line">        list.leftPush(<span class="string">"oplist3"</span>,<span class="string">"3rd"</span>);</span><br><span class="line">        System.out.println(list.range(<span class="string">"oplist3"</span>,<span class="number">0</span>,<span class="number">5</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加一个set集合</span></span><br><span class="line">        SetOperations&lt;String,Object&gt; set = redisTemplate.opsForSet();</span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"Apple"</span>);</span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"13"</span>);</span><br><span class="line">        set.add(<span class="string">"opSet"</span>,<span class="string">"13"</span>);<span class="comment">//由于是集合，相同的元素会覆盖掉</span></span><br><span class="line">        <span class="comment">//输出set集合</span></span><br><span class="line">        System.out.println(set.members(<span class="string">"opSet"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加有序的set集合</span></span><br><span class="line">        ZSetOperations&lt;String,Object&gt; zset = redisTemplate.opsForZSet();</span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Apple"</span>,<span class="number">2</span>);</span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Orange"</span>,<span class="number">0</span>);</span><br><span class="line">        zset.add(<span class="string">"opZset"</span>,<span class="string">"Banana"</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="comment">//输出有序set集合</span></span><br><span class="line">        System.out.println(zset.rangeByScore(<span class="string">"opZset"</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -220,16 +250,22 @@
 
 
 </div>
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <nav class="level">
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                        <img class="" src="/images/avatar.jpg" alt="Jmeow">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -258,7 +294,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            22
+                            40
                         </p>
                     </a>
                 </div>
@@ -298,25 +334,29 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BJ4501">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com/bj4501">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="tencent://message/?uin=3080293757">
                 
                 <i class="fab fa-qq"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="mailto:neko@jmeow.org">
                 
                 <i class="fas fa-envelope"></i>
                 
@@ -359,13 +399,36 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://runo.plus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">露诺的小窝</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">runo.plus</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rehtt.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Rehtt&#39;s Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rehtt.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
 </div>
 
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
@@ -373,23 +436,23 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Android/">
+        <a class="level is-marginless" href="/categories/android/">
             <span class="level-start">
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">23</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/">
+        <a class="level is-marginless" href="/categories/frontend/">
             <span class="level-start">
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Frontend/Css/">
+        <a class="level is-marginless" href="/categories/frontend/css/">
             <span class="level-start">
                 <span class="level-item">Css</span>
             </span>
@@ -397,7 +460,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+        <a class="level is-marginless" href="/categories/frontend/javascript/">
             <span class="level-start">
                 <span class="level-item">Javascript</span>
             </span>
@@ -405,15 +468,15 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Java/">
+        <a class="level is-marginless" href="/categories/java/">
             <span class="level-start">
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+        <a class="level is-marginless" href="/categories/java/algorithm/">
             <span class="level-start">
                 <span class="level-item">Algorithm</span>
             </span>
@@ -421,7 +484,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/Basic/">
+        <a class="level is-marginless" href="/categories/java/basic/">
             <span class="level-start">
                 <span class="level-item">Basic</span>
             </span>
@@ -429,23 +492,23 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+        <a class="level is-marginless" href="/categories/java/javaweb/">
             <span class="level-start">
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Other/">
+        <a class="level is-marginless" href="/categories/other/">
             <span class="level-start">
                 <span class="level-item">Other</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+        <a class="level is-marginless" href="/categories/daily/">
             <span class="level-start">
                 <span class="level-item">日常</span>
             </span>
@@ -463,7 +526,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -479,12 +542,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -495,7 +690,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -571,7 +766,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -592,7 +787,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -606,7 +801,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -675,7 +870,12 @@
     
 </div>
 
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -686,12 +886,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -702,7 +1034,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -778,7 +1110,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -799,7 +1131,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -813,7 +1145,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -895,12 +1227,13 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                © 2020 JmeowTechnology 
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                &copy; 2022 JmeowTechnology&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
                 <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_container_site_pv">
+                共<span id="busuanzi_value_site_pv">0</span>次访问
                 </span>
                 
                 </p>
@@ -944,7 +1277,20 @@
 <script>moment.locale("zh-CN");</script>
 
 
-<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.jmeow.org',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
@@ -952,11 +1298,14 @@
 
 
 
+
 <script src="/js/animation.js"></script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
 
 
 
@@ -964,18 +1313,48 @@
     <h6>Your browser is out-of-date!</h6>
     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
             my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
 
 <a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
+<script src="/js/back-to-top.js" defer></script>
 
 
 
@@ -990,14 +1369,13 @@
 
 
 
-
-
+<script src="/js/main.js" defer></script>
 
     
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1005,10 +1383,24 @@
         </div>
     </div>
 </div>
-<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
-
-
-
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
-
-<script src="/js/bundle.js" defer></script></body></html>
+</body>
+</html>

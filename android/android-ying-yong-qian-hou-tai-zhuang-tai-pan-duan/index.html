@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="zh"><head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
 
-<meta name="generator" content="Hexo 4.0.0">
+<meta name="generator" content="Hexo 4.0.0" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <title>Android应用前后台状态判断 - JmeowTechnology</title>
 
@@ -12,14 +14,14 @@
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android应用前后台状态判断">
-<meta property="og:url" content="http://www.jmeow.org/android/android-ying-yong-qian-hou-tai-zhuang-tai-pan-duan/index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;android&#x2F;android-ying-yong-qian-hou-tai-zhuang-tai-pan-duan&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
 <meta property="og:description" content="开发中遇到了一个需求，如果应用在非前台的状态超过一定时间，就需要用户重新去登录。如果用户不进行登录，就回到主页。这种类似的需求我在银行类App中见到过。技术点就是如何判断App当前的状态。 但是这里面状态有很多，并不只是前后台。还有App在前台，但是用户锁屏放置的情况，这种情况，也是需要算作用户未使用App的，所以需要判断的状态如下。 应用状态：  从后台切换到前台 从前台切换到后台 用户锁屏 用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.jmeow.org/images/og_image.png">
-<meta property="og:updated_time" content="2020-03-30T07:42:29.992Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2022-04-13T16:48:58.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.jmeow.org/images/og_image.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 
 
 
@@ -31,25 +33,29 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.4.1/css/all.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Roboto+Mono">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
 
 
     
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-<link rel="stylesheet" href="/css/bundle.css"></head><body class="is-3-column">
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
 
     
     
     
     
+<link rel="stylesheet" href="/css/back-to-top.css">
 
     
     
@@ -58,16 +64,16 @@
     
     
     
-    
+    <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
 <link rel="stylesheet" href="/css/style.css">
-
-
+</head>
+<body class="is-3-column">
     <nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
@@ -83,15 +89,20 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item"
+                href="/">Home</a>
                 
-                <a class="navbar-item" href="/archives">Archives</a>
+                <a class="navbar-item"
+                href="/archives">Archives</a>
                 
-                <a class="navbar-item" href="/categories">Categories</a>
+                <a class="navbar-item"
+                href="/categories">Categories</a>
                 
-                <a class="navbar-item" href="/tags">Tags</a>
+                <a class="navbar-item"
+                href="/tags">Tags</a>
                 
-                <a class="navbar-item" href="/about">About</a>
+                <a class="navbar-item"
+                href="/about">About</a>
                 
             </div>
             
@@ -119,7 +130,8 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
     
     <div class="card-content article ">
         
@@ -128,7 +140,7 @@
                 <time class="level-item has-text-grey" datetime="2020-03-30T07:37:38.000Z">2020-03-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
                 </div>
                 
                 
@@ -183,7 +195,7 @@
 <p>常量准备好后，现在开始编写判断部分的代码。</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在onCreate中注册此部分</span></span><br><span class="line">registerActivityLifecycleCallbacks(<span class="keyword">new</span> ActivityLifecycleCallbacks() {</span><br><span class="line">	<span class="comment">//便于观察，这里删去了暂时不需要的方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResumed</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">		<span class="keyword">if</span> (isBackFlag || background) {</span><br><span class="line">            <span class="comment">//执行到这里说明App是从后台返回的</span></span><br><span class="line">            <span class="comment">//状态从后台切换为前台</span></span><br><span class="line">            isBackFlag = <span class="keyword">false</span>;</span><br><span class="line">            background = <span class="keyword">false</span>;</span><br><span class="line">            sAppState = STATE_BACK_TO_FRONT;</span><br><span class="line">            <span class="comment">//TODO：在这里可以处理App从后台返回的逻辑</span></span><br><span class="line">            <span class="comment">//通过frontToBackTime与现在时间的计算，判断用户是否超时</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="comment">//否则是默认状态</span></span><br><span class="line">            sAppState = STATE_NORMAL;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityStopped</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        <span class="comment">//判断当前activity是否处于前台</span></span><br><span class="line">        <span class="keyword">if</span> (!DeviceUtils.isCurAppTop(activity)) {</span><br><span class="line">            <span class="comment">//从前台进入后台</span></span><br><span class="line">            sAppState = STATE_FRONT_TO_BACK;</span><br><span class="line">			<span class="comment">//记录从前台进入后台的时间</span></span><br><span class="line">            frontToBackTime = System.currentTimeMillis();</span><br><span class="line">            isBackFlag = <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTrimMemory</span><span class="params">(<span class="keyword">int</span> level)</span> </span>{</span><br><span class="line">    <span class="keyword">super</span>.onTrimMemory(level);</span><br><span class="line">    <span class="comment">// TRIM_MEMORY_UI_HIDDEN是UI不可见的回调, 通常程序进入后台后都会触发此回调,大部分手机多是回调这个参数</span></span><br><span class="line">    <span class="comment">// TRIM_MEMORY_BACKGROUND也是程序进入后台的回调, 不同厂商不太一样, 魅族手机就是回调这个参数</span></span><br><span class="line">    <span class="keyword">if</span> (level == Application.TRIM_MEMORY_UI_HIDDEN || level == TRIM_MEMORY_BACKGROUND) {</span><br><span class="line">        background = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">//TRIM_MEMORY_COMPLETE表示内存已经很低，系统可能会杀掉我们的应用</span></span><br><span class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (level == Application.TRIM_MEMORY_COMPLETE) {</span><br><span class="line">        background = !DeviceUtils.isCurAppTop(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (background) {</span><br><span class="line">        <span class="comment">//记录时间</span></span><br><span class="line">        frontToBackTime = System.currentTimeMillis();</span><br><span class="line">        sAppState = STATE_FRONT_TO_BACK;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        sAppState = STATE_NORMAL;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>isCurAppTop是用来判断程序是否是前台进程的工具类，代码如下：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断当前程序是否前台进程</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCurAppTop</span><span class="params">(Context context)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (context == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    }</span><br><span class="line">    String curPackageName = context.getPackageName();</span><br><span class="line">    ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">    List<activitymanager.runningtaskinfo> list = am.getRunningTasks(<span class="number">1</span>);</activitymanager.runningtaskinfo></span><br><span class="line">    <span class="keyword">if</span> (list != <span class="keyword">null</span> && list.size() > <span class="number">0</span>) {</span><br><span class="line">        ActivityManager.RunningTaskInfo info = list.get(<span class="number">0</span>);</span><br><span class="line">        String topPackageName = info.topActivity.getPackageName();</span><br><span class="line">        String basePackageName = info.baseActivity.getPackageName();</span><br><span class="line">        <span class="keyword">if</span> (topPackageName.equals(curPackageName) && basePackageName.equals(curPackageName)) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断当前程序是否前台进程</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isCurAppTop</span><span class="params">(Context context)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (context == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    }</span><br><span class="line">    String curPackageName = context.getPackageName();</span><br><span class="line">    ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">    List&lt;ActivityManager.RunningTaskInfo&gt; list = am.getRunningTasks(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (list != <span class="keyword">null</span> &amp;&amp; list.size() &gt; <span class="number">0</span>) {</span><br><span class="line">        ActivityManager.RunningTaskInfo info = list.get(<span class="number">0</span>);</span><br><span class="line">        String topPackageName = info.topActivity.getPackageName();</span><br><span class="line">        String basePackageName = info.baseActivity.getPackageName();</span><br><span class="line">        <span class="keyword">if</span> (topPackageName.equals(curPackageName) &amp;&amp; basePackageName.equals(curPackageName)) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="判断用户是否进行锁屏解锁">判断用户是否进行锁屏解锁</h2>
 <p>上面的判断方法虽然已经很完整了，但是当用户将App放置前台并锁屏之后，不会触发上面的流程，那么需要对用户锁屏与解锁的状态进行判断了。</p>
 <p>这时候我们需要在onCreate注册一个广播接收器，来接收系统锁屏开屏的广播。<br>
@@ -199,7 +211,7 @@
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ScreenBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>{</span><br><span class="line">        String action = intent.getAction();</span><br><span class="line">        <span class="keyword">if</span> (Intent.ACTION_SCREEN_ON.equals(action)) {</span><br><span class="line">            <span class="comment">// 开屏</span></span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (Intent.ACTION_SCREEN_OFF.equals(action)) {</span><br><span class="line">            <span class="comment">// 锁屏</span></span><br><span class="line">            <span class="keyword">if</span> (sAppState != STATE_FRONT_TO_BACK){</span><br><span class="line">                <span class="comment">//当应用处于后台时，仍会收到广播。所以在后台时，注意不要刷新从前台进入后台的时间。</span></span><br><span class="line">                isBackFlag = <span class="keyword">true</span>;</span><br><span class="line">                sAppState = STATE_FRONT_TO_BACK;</span><br><span class="line">                frontToBackTime = System.currentTimeMillis();</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (Intent.ACTION_USER_PRESENT.equals(action)) {</span><br><span class="line">            <span class="comment">// 解锁</span></span><br><span class="line">            <span class="comment">// TODO：在这里可以判断是否超时，从锁屏回到App的状态处理</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//在onCreate中注册广播接收器</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startScreenBroadcastReceiver</span><span class="params">()</span> </span>{</span><br><span class="line">    ScreenBroadcastReceiver mScreenReceiver = <span class="keyword">new</span> ScreenBroadcastReceiver();</span><br><span class="line">    IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">    filter.addAction(Intent.ACTION_SCREEN_ON);</span><br><span class="line">    filter.addAction(Intent.ACTION_SCREEN_OFF);</span><br><span class="line">    filter.addAction(Intent.ACTION_USER_PRESENT);</span><br><span class="line">    <span class="keyword">this</span>.registerReceiver(mScreenReceiver, filter);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="用户如果不进行登录，返回主页">用户如果不进行登录，返回主页</h2>
 <p>在App类中，创建管理Activity栈的对象。这里面需要一个工具类。ApplicationActivitiesQueue</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 管理 Activity 的 视图栈</span></span><br><span class="line"><span class="comment"> * From: https://www.jianshu.com/p/7adf0890e6b9</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationActivitiesQueue</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ApplicationActivitiesQueue</span><span class="params">()</span> </span>{</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationActivitiesQueue queue = <span class="keyword">new</span> ApplicationActivitiesQueue();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ApplicationActivitiesQueue <span class="title">ShareActivityQueue</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> queue;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack<activity> activityStack = <span class="keyword">new</span> Stack<activity>();</activity></activity></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取当前的activity，不做任何操作</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Activity <span class="title">currentActivity</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> activityStack.lastElement();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 只有这俩方法 操作 activityStack不能手动调用（都是自动添加删除的）</span></span><br><span class="line"><span class="comment">     * addActivity 添加Activity到堆栈</span></span><br><span class="line"><span class="comment">     * popCurrentActivity 结束当前Activity</span></span><br><span class="line"><span class="comment">     * currentActivity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        activityStack.push(activity);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">popCurrentActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        activityStack.remove(activity);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 下面的这些方法都是辅助方法 (注意防止当前activity结束当前的导致crash)</span></span><br><span class="line"><span class="comment">     * 获取当前Activity（堆栈中最后一个压入的）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// 结束指定的Activity</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishOneActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (!activity.isFinishing()) {</span><br><span class="line">                activity.finish();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结束指定类名的Activity</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishOneActivity</span><span class="params">(Class<!--?--> cls)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (!activity.getClass().equals(cls)) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束至指定类名Activity(不包括该类名)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishToActiovity</span><span class="params">(Class<!--?--> cls)</span> </span>{</span><br><span class="line">        <span class="keyword">while</span> (!activityStack.lastElement().getClass().equals(cls)) {</span><br><span class="line">            activityStack.pop().finish();</span><br><span class="line">            <span class="keyword">if</span> (activityStack.size() == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束除指定类名的所有Activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishExcludeActivityAllActivity</span><span class="params">(Class<!--?--> cls)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (activity.getClass().equals(cls)) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束所有Activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishAllActivity</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 管理 Activity 的 视图栈</span></span><br><span class="line"><span class="comment"> * From: https://www.jianshu.com/p/7adf0890e6b9</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationActivitiesQueue</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ApplicationActivitiesQueue</span><span class="params">()</span> </span>{</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ApplicationActivitiesQueue queue = <span class="keyword">new</span> ApplicationActivitiesQueue();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ApplicationActivitiesQueue <span class="title">ShareActivityQueue</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> queue;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Activity&gt; activityStack = <span class="keyword">new</span> Stack&lt;Activity&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取当前的activity，不做任何操作</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Activity <span class="title">currentActivity</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> activityStack.lastElement();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 只有这俩方法 操作 activityStack不能手动调用（都是自动添加删除的）</span></span><br><span class="line"><span class="comment">     * addActivity 添加Activity到堆栈</span></span><br><span class="line"><span class="comment">     * popCurrentActivity 结束当前Activity</span></span><br><span class="line"><span class="comment">     * currentActivity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        activityStack.push(activity);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">popCurrentActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        activityStack.remove(activity);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 下面的这些方法都是辅助方法 (注意防止当前activity结束当前的导致crash)</span></span><br><span class="line"><span class="comment">     * 获取当前Activity（堆栈中最后一个压入的）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// 结束指定的Activity</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishOneActivity</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (!activity.isFinishing()) {</span><br><span class="line">                activity.finish();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结束指定类名的Activity</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishOneActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (!activity.getClass().equals(cls)) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束至指定类名Activity(不包括该类名)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishToActiovity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>{</span><br><span class="line">        <span class="keyword">while</span> (!activityStack.lastElement().getClass().equals(cls)) {</span><br><span class="line">            activityStack.pop().finish();</span><br><span class="line">            <span class="keyword">if</span> (activityStack.size() == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束除指定类名的所有Activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishExcludeActivityAllActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (activity.getClass().equals(cls)) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 结束所有Activity</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishAllActivity</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) {</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            finishOneActivity(activity);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>使用方法：<br>
 在<code>registerActivityLifecycleCallbacks</code>中的<code>onActivityCreated</code>和<code>onActivityDestroyed</code>将当前Activity添加入视图栈中，之后按需调用视图栈的方法即可。</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Activity队列</span></span><br><span class="line"><span class="keyword">private</span> ApplicationActivitiesQueue activitiesQueue = ApplicationActivitiesQueue.ShareActivityQueue();</span><br><span class="line"></span><br><span class="line">registerActivityLifecycleCallbacks(<span class="keyword">new</span> ActivityLifecycleCallbacks() {</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityCreated</span><span class="params">(Activity activity, Bundle savedInstanceState)</span> </span>{</span><br><span class="line">        activitiesQueue.addActivity(activity);<span class="comment">//创建</span></span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityDestroyed</span><span class="params">(Activity activity)</span> </span>{</span><br><span class="line">        activitiesQueue.popCurrentActivity(activity);<span class="comment">//退出</span></span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
@@ -208,7 +220,25 @@
 <li><a href="https://www.jianshu.com/p/38ca64901687">https://www.jianshu.com/p/38ca64901687</a></li>
 <li><a href="https://www.jianshu.com/p/7adf0890e6b9">https://www.jianshu.com/p/7adf0890e6b9</a></li>
 </ul>
-<script>document.querySelectorAll(".github-emoji").forEach(e=>{if(!e.dataset.src)return;const t=document.createElement("img");t.style="display:none !important;",t.src=e.dataset.src,t.addEventListener("error",()=>{t.remove(),e.style.color="inherit",e.style.backgroundImage="none",e.style.background="none"}),t.addEventListener("load",()=>{t.remove()}),document.body.appendChild(t)});</script>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -252,16 +282,22 @@
 
 
 </div>
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <nav class="level">
             <div class="level-item has-text-centered" style="flex-shrink: 1">
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class src="/images/avatar.jpg" alt="Jmeow">
+                        <img class="" src="/images/avatar.jpg" alt="Jmeow">
                     </figure>
                     
                     <p class="is-size-4 is-block">
@@ -290,7 +326,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            22
+                            40
                         </p>
                     </a>
                 </div>
@@ -330,25 +366,29 @@
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/BJ4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BJ4501">
                 
                 <i class="fab fa-github"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com/bj4501">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="https://twitter.com/bj4501">
                 
                 <i class="fab fa-twitter"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="Dribbble" href="tencent://message/?uin=3080293757">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Dribbble" href="tencent://message/?uin=3080293757">
                 
                 <i class="fab fa-qq"></i>
                 
             </a>
             
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="mailto:neko@jmeow.org">
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="mailto:neko@jmeow.org">
                 
                 <i class="fas fa-envelope"></i>
                 
@@ -391,13 +431,36 @@
                 </a>
             </li>
         
+            <li>
+                <a class="level is-mobile" href="https://runo.plus/" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">露诺的小窝</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">runo.plus</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://rehtt.com" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">Rehtt&#39;s Blog</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">rehtt.com</span>
+                    </span>
+                </a>
+            </li>
+        
         </ul>
         </div>
     </div>
 </div>
 
     
-        <div class="card widget">
+        
+<div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
@@ -405,23 +468,23 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Android/">
+        <a class="level is-marginless" href="/categories/android/">
             <span class="level-start">
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">23</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/">
+        <a class="level is-marginless" href="/categories/frontend/">
             <span class="level-start">
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Frontend/Css/">
+        <a class="level is-marginless" href="/categories/frontend/css/">
             <span class="level-start">
                 <span class="level-item">Css</span>
             </span>
@@ -429,7 +492,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Frontend/Javascript/">
+        <a class="level is-marginless" href="/categories/frontend/javascript/">
             <span class="level-start">
                 <span class="level-item">Javascript</span>
             </span>
@@ -437,15 +500,15 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Java/">
+        <a class="level is-marginless" href="/categories/java/">
             <span class="level-start">
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/Java/Algorithm/">
+        <a class="level is-marginless" href="/categories/java/algorithm/">
             <span class="level-start">
                 <span class="level-item">Algorithm</span>
             </span>
@@ -453,7 +516,7 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/Basic/">
+        <a class="level is-marginless" href="/categories/java/basic/">
             <span class="level-start">
                 <span class="level-item">Basic</span>
             </span>
@@ -461,23 +524,23 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/Java/JavaWeb/">
+        <a class="level is-marginless" href="/categories/java/javaweb/">
             <span class="level-start">
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Other/">
+        <a class="level is-marginless" href="/categories/other/">
             <span class="level-start">
                 <span class="level-item">Other</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%97%A5%E5%B8%B8/">
+        <a class="level is-marginless" href="/categories/daily/">
             <span class="level-start">
                 <span class="level-item">日常</span>
             </span>
@@ -495,7 +558,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 10px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -511,12 +574,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -527,7 +722,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -603,7 +798,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -624,7 +819,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -638,7 +833,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -707,7 +902,12 @@
     
 </div>
 
-                <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         <div class="card widget">
     <div class="card-content">
@@ -718,12 +918,144 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2022/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2021/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -734,7 +1066,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">4</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -810,7 +1142,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">23</span>
                     </a>
                 </div>
                 
@@ -831,7 +1163,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Frontend/">
                         <span class="tag">Frontend</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -845,7 +1177,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -927,12 +1259,13 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                © 2020 JmeowTechnology 
-                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                &copy; 2022 JmeowTechnology&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
                 <br>
-                <span id="busuanzi_container_site_uv">
-                共<span id="busuanzi_value_site_uv">0</span>个访客
+                <span id="busuanzi_container_site_pv">
+                共<span id="busuanzi_value_site_pv">0</span>次访问
                 </span>
                 
                 </p>
@@ -976,7 +1309,20 @@
 <script>moment.locale("zh-CN");</script>
 
 
-<script>var IcarusThemeSettings={site:{url:"http://www.jmeow.org",external_link:{enable:!0,exclude:[]}},article:{highlight:{clipboard:!0,fold:"unfolded"}}};</script>
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://www.jmeow.org',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
@@ -984,11 +1330,14 @@
 
 
 
+
 <script src="/js/animation.js"></script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
 
 
 
@@ -996,18 +1345,48 @@
     <h6>Your browser is out-of-date!</h6>
     <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
             my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){outdatedBrowser({bgColor:"#f25648",color:"#ffffff",lowerThan:"flex"})});</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>document.addEventListener("DOMContentLoaded",function(){MathJax.Hub.Config({"HTML-CSS":{matchFontHeight:!1},SVG:{matchFontHeight:!1},CommonHTML:{matchFontHeight:!1},tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]]}})});</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
 
 <a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
+<script src="/js/back-to-top.js" defer></script>
 
 
 
@@ -1022,14 +1401,13 @@
 
 
 
-
-
+<script src="/js/main.js" defer></script>
 
     
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -1037,10 +1415,24 @@
         </div>
     </div>
 </div>
-<script>window.INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)"},CONTENT_URL:"/content.json"};</script>
-
-
-
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
     
-
-<script src="/js/bundle.js" defer></script></body></html>
+</body>
+</html>
