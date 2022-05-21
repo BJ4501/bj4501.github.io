@@ -7,13 +7,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: Javascript - JmeowTechnology</title>
+<title>分类: Frontend - JmeowTechnology</title>
 
 
     <meta name="description" content="Furry | Code | Game Design">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JmeowTechnology">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;tags&#x2F;Javascript&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;categories&#x2F;frontend&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
 <meta property="og:description" content="Furry | Code | Game Design">
 <meta property="og:locale" content="zh-CN">
@@ -132,12 +132,263 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Javascript</a></li>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">Frontend</a></li>
         </ul>
         </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T08:08:19.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1031 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/webpack-dev-server-pei-zhi-fan-che-ji-lu/">webpack-dev-server配置翻车记录</a>
+            
+        </h1>
+        <div class="content">
+            <p>在配置WebpackDevServer后，在开发的过程中，经常出现莫名其妙的内存溢出，最后经过多方排查，发现问题出在webpack的配置文件上。</p>
+<p><strong>错误的配置文件</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旧配置文件，现作废，原因见下面描述</span></span><br><span class="line">devServer: {</span><br><span class="line">    <span class="comment">//基础目录(可选)</span></span><br><span class="line">    <span class="comment">//contentBase: './',</span></span><br><span class="line">    <span class="comment">//如果需要被外部访问</span></span><br><span class="line">    host: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">    port: <span class="number">8989</span>,</span><br><span class="line">    <span class="comment">//只显示错误提示</span></span><br><span class="line">    stats: <span class="string">"errors-only"</span>,</span><br><span class="line">    <span class="comment">//静态资源路径</span></span><br><span class="line">    publicPath: <span class="string">"/dist/"</span>,</span><br><span class="line">    <span class="comment">//在devServer启动之前执行的方法</span></span><br><span class="line">    after: <span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Server Start!'</span>);</span><br><span class="line">    },</span><br><span class="line">    <span class="comment">//将默认 /dist/ 路径代理为 / 路径</span></span><br><span class="line">    proxy: {</span><br><span class="line">        <span class="string">'/'</span>: <span class="string">'http://0.0.0.0:8989/dist/'</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/webpack-dev-server-pei-zhi-fan-che-ji-lu/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/frontend/mac-xia-jin-yong-chrome-kua-yu-jian-cha/" class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/math.jpg" alt="Mac下禁用Chrome跨域检查">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-04T16:24:23.000Z">2020-03-05</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 297 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/mac-xia-jin-yong-chrome-kua-yu-jian-cha/">Mac下禁用Chrome跨域检查</a>
+            
+        </h1>
+        <div class="content">
+            <p>在开发时，我们经常会遇到CORS跨域问题，这是由于浏览器的同源策略，这是一种浏览器的安全限制。<br>
+但是在本地前后端分离式开发的时候，经常会遇到要本地浏览器调用非同源请求，这个时候可以对后端进行CORS的处理。<br>
+但是有时候，出现跨域问题，只是临时开发时才会出现的问题。<br>
+那么我们可以暂时关闭浏览器的跨域检查，来简化我们的开发。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/mac-xia-jin-yong-chrome-kua-yu-jian-cha/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-image">
+        <a href="/frontend/css/html5-css-ji-chu-zhi-shi/" class="image is-7by1">
+            <img class="thumbnail" src="/gallery/thumbnails/material-6.png" alt="HTML5 CSS 基础知识">
+        </a>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-16T07:01:23.000Z">2018-12-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/frontend/css/">Css</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1533 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/css/html5-css-ji-chu-zhi-shi/">HTML5 CSS 基础知识</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="HTML">HTML</h2>
+<h3 id="HTML常见元素">HTML常见元素</h3>
+<ul>
+<li>header (一些资源和信息描述)
+<ul>
+<li>meta</li>
+<li>title</li>
+<li>style</li>
+<li>link</li>
+<li>script</li>
+<li>base</li>
+</ul>
+</li>
+</ul>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/css/html5-css-ji-chu-zhi-shi/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-14T08:44:44.000Z">2018-12-14</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 138 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/wang-luo-xiang-guan-ji-chu-zhi-shi/">网络相关基础知识</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="页面加载过程">页面加载过程</h2>
+<ol>
+<li>URL解析</li>
+<li>DNS查询</li>
+<li>资源请求</li>
+<li>浏览器解析</li>
+</ol>
+<h2 id="URL结构">URL结构</h2>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com:80/getdata.do?userId=1#title</span><br><span class="line">协议        域名     端口   路径     参数     哈希</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/wang-luo-xiang-guan-ji-chu-zhi-shi/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     
 <div class="card">
@@ -311,7 +562,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            39
+                            40
                         </p>
                     </a>
                 </div>
@@ -458,7 +709,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -564,7 +815,7 @@
                     <span class="level-item">一月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -772,7 +1023,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -897,7 +1148,7 @@
                     <span class="level-item">一月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1105,7 +1356,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 

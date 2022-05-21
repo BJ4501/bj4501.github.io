@@ -146,6 +146,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-30T09:09:36.000Z">2020-07-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 890 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/">Android实现截屏的两种方式</a>
+            
+        </h1>
+        <div class="content">
+            <p>一个需要截屏的需求，并且如果可以做到的话，需要截取用户的状态栏图象。</p>
+<h2 id="方法1-使用View的DrawCache来获取当前显示的内容">方法1  使用View的DrawCache来获取当前显示的内容</h2>
+<p>优点：方法简单。<br>
+缺点：无法截取到状态栏的内容，包括时间，电量，wifi，4G状态等。</p>
+<p>注意这里要使用<code>Bitmap.createBitmap</code>否则Bitmap可能会被回收造成崩溃。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">View rootView = activity.getWindow().getDecorView().getRootView();</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap drawingCache = Bitmap.createBitmap(rootView.getDrawingCache());</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-06-11T07:16:42.000Z">2020-06-11</time>
                 
                 <div class="level-item">
@@ -433,68 +491,6 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-30T07:37:38.000Z">2020-03-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    13 分钟 读完 (大约 1999 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-ying-yong-qian-hou-tai-zhuang-tai-pan-duan/">Android应用前后台状态判断</a>
-            
-        </h1>
-        <div class="content">
-            <p>开发中遇到了一个需求，如果应用在非前台的状态超过一定时间，就需要用户重新去登录。如果用户不进行登录，就回到主页。这种类似的需求我在银行类App中见到过。技术点就是如何判断App当前的状态。</p>
-<p>但是这里面状态有很多，并不只是前后台。还有App在前台，但是用户锁屏放置的情况，这种情况，也是需要算作用户未使用App的，所以需要判断的状态如下。</p>
-<p>应用状态：</p>
-<ul>
-<li>从后台切换到前台</li>
-<li>从前台切换到后台</li>
-<li>用户锁屏</li>
-<li>用户解锁手机</li>
-</ul>
-<p>总结出需要判断的内容之后，可以开始根据不同状态编写代码了。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-ying-yong-qian-hou-tai-zhuang-tai-pan-duan/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -563,7 +559,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            39
+                            40
                         </p>
                     </a>
                 </div>
@@ -710,7 +706,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -816,7 +812,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     <span class="level-item">一月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1024,7 +1020,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1149,7 +1145,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     <span class="level-item">一月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1357,7 +1353,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
