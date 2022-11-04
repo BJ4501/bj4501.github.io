@@ -136,6 +136,62 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-05-13T10:29:32.000Z">2021-05-13</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1843 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-nei-cun-xie-lu-de-pai-cha/">Android内存泄露的排查</a>
+            
+        </h1>
+        <div class="content">
+            <p>在一次项目开发中，测试提到了一个问题，在详情数据页左右反复滑动多次，页面会越来越卡顿，加载速度也会越来越慢，需要我排查一下问题。<br>
+由于这个详情数据页面是一个Fragment，数据量特别大，并且嵌套在ViewPage中可以左右滑动，并且ViewPage的页数可以非常多。那么首先想到的问题是ViewPage + Fragment，Fragment没有被正确回收导致的。<br>
+首先来排查下Fragment的生成逻辑：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Fragment <span class="title">getFragment</span><span class="params">(Fragment fragment, <span class="keyword">int</span> currentPage)</span> </span>{</span><br><span class="line">    DemoFragment fragment = <span class="keyword">new</span> DemoFragment();</span><br><span class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">    bundle.putInt(<span class="string">"page"</span>, currentPage);</span><br><span class="line">    fragment.setArguments(bundle);</span><br><span class="line">    <span class="keyword">return</span> fragment;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-nei-cun-xie-lu-de-pai-cha/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-05-08T07:59:47.000Z">2021-05-08</time>
                 
                 <div class="level-item">
@@ -416,61 +472,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-10-14T02:59:08.000Z">2020-10-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 295 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/duo-edittext-ye-mian-ru-he-qing-chu-shu-ru-jiao-dian/">多EditText页面如何清除输入焦点</a>
-            
-        </h1>
-        <div class="content">
-            <p>开发中，如果需要清空EditText的输入焦点，一般情况下都需要使用<code>EditText.clearFocus()</code>。<br>
-但在当一个页面中有多个EditText输入框时，<code>clearFocus</code>有时却无效，清空焦点之后，焦点会重新回到第一个EditText。<br>
-那么是不是说明clearFocus在多EditText情况下无效呢？</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/duo-edittext-ye-mian-ru-he-qing-chu-shu-ru-jiao-dian/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -541,7 +542,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            40
+                            41
                         </p>
                     </a>
                 </div>
@@ -696,7 +697,7 @@
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/frontend/css/">
@@ -773,7 +774,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 13.33px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -794,7 +795,7 @@
                     <span class="level-item">八月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1041,7 +1042,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1138,7 +1139,7 @@
                     <span class="level-item">八月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1385,7 +1386,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

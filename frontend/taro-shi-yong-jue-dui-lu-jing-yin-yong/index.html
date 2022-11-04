@@ -7,16 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>网络相关基础知识 - JmeowTechnology</title>
+<title>Taro使用绝对路径引用 - JmeowTechnology</title>
 
 
-    <meta name="description" content="页面加载过程  URL解析 DNS查询 资源请求 浏览器解析  URL结构 12http:&#x2F;&#x2F;www.baidu.com:80&#x2F;getdata.do?userId=1#title协议        域名     端口   路径     参数     哈希">
-<meta name="keywords" content="Frontend">
+    <meta name="description" content="Taro项目初始化完毕之后，在编写组件的同时，需要进行页面与组件的组合和引用，这时，使用Vscode的默认提示的引用，会提示找不到&#x2F;src路径，但是手工引用相对路径，却可以正常引用成功。 1Module not found: Error: Can&amp;apos;t resolve &amp;apos;&#x2F;src&#x2F;components&amp;apos; in &amp;apos;&#x2F;xxx&#x2F;project&#x2F;src&#x2F;pages&#x2F;index&amp;apos; 但是很多时候，组件的位置会需">
+<meta name="keywords" content="HTML5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网络相关基础知识">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;frontend&#x2F;wang-luo-xiang-guan-ji-chu-zhi-shi&#x2F;index.html">
+<meta property="og:title" content="Taro使用绝对路径引用">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;frontend&#x2F;taro-shi-yong-jue-dui-lu-jing-yin-yong&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
-<meta property="og:description" content="页面加载过程  URL解析 DNS查询 资源请求 浏览器解析  URL结构 12http:&#x2F;&#x2F;www.baidu.com:80&#x2F;getdata.do?userId=1#title协议        域名     端口   路径     参数     哈希">
+<meta property="og:description" content="Taro项目初始化完毕之后，在编写组件的同时，需要进行页面与组件的组合和引用，这时，使用Vscode的默认提示的引用，会提示找不到&#x2F;src路径，但是手工引用相对路径，却可以正常引用成功。 1Module not found: Error: Can&amp;apos;t resolve &amp;apos;&#x2F;src&#x2F;components&amp;apos; in &amp;apos;&#x2F;xxx&#x2F;project&#x2F;src&#x2F;pages&#x2F;index&amp;apos; 但是很多时候，组件的位置会需">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 <meta property="og:updated_time" content="2022-11-04T07:54:10.405Z">
@@ -80,7 +80,7 @@
             <a class="navbar-item navbar-logo" href="/">
             <!-- Logo 暂时禁用，有Logo再换上 -->
             <!-- 
-                <img src="/images/logo.svg" alt="网络相关基础知识" height="28">
+                <img src="/images/logo.svg" alt="Taro使用绝对路径引用" height="28">
              -->
                 JmeowTechnology
             </a>
@@ -137,7 +137,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-14T08:44:44.000Z">2018-12-14</time>
+                <time class="level-item has-text-grey" datetime="2022-08-24T06:15:59.000Z">2022-08-24</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
@@ -147,7 +147,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 读完 (大约 138 个字)
+                    3 分钟 读完 (大约 505 个字)
                 </span>
                 
                 
@@ -161,38 +161,32 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                网络相关基础知识
+                Taro使用绝对路径引用
             
         </h1>
         <div class="content">
-            <h2 id="页面加载过程">页面加载过程</h2>
-<ol>
-<li>URL解析</li>
-<li>DNS查询</li>
-<li>资源请求</li>
-<li>浏览器解析</li>
-</ol>
-<h2 id="URL结构">URL结构</h2>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com:80/getdata.do?userId=1#title</span><br><span class="line">协议        域名     端口   路径     参数     哈希</span><br></pre></td></tr></tbody></table></figure>
+            <p>Taro项目初始化完毕之后，在编写组件的同时，需要进行页面与组件的组合和引用，这时，使用Vscode的默认提示的引用，会提示找不到/src路径，但是手工引用相对路径，却可以正常引用成功。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Module not found: Error: Can't resolve '/src/components' in '/xxx/project/src/pages/index'</span><br></pre></td></tr></tbody></table></figure>
+<p>但是很多时候，组件的位置会需要调整，每次都使用相对路径是十分繁琐的，能否使用绝对路径呢？是不是Taro就不支持绝对路径呢？</p>
+<p>查看Taro说明之后可以发现，Taro确实是不允许“直接”使用绝对路径引用的，但是我们可以通过设置目录别名，来引用路径。</p>
 <a id="more"></a>
-<h2 id="DNS查询">DNS查询</h2>
+<h2 id="添加alias配置">添加alias配置</h2>
+<p>在Taro项目config/index.js下，添加alias配置：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//需要引用path</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = {</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  alias: {</span><br><span class="line">    <span class="string">'@/components'</span>: path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'src/components'</span>),</span><br><span class="line">    <span class="string">'@/utils'</span>: path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'src/utils'</span>),</span><br><span class="line">    <span class="string">'@/package'</span>: path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'package.json'</span>),</span><br><span class="line">    <span class="string">'@/project'</span>: path.resolve(__dirname, <span class="string">'..'</span>, <span class="string">'project.config.json'</span>),</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>原写法：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'../../components/A'</span></span><br><span class="line"><span class="keyword">import</span> Utils <span class="keyword">from</span> <span class="string">'../../utils'</span></span><br><span class="line"><span class="keyword">import</span> packageJson <span class="keyword">from</span> <span class="string">'../../package.json'</span></span><br><span class="line"><span class="keyword">import</span> projectConfig <span class="keyword">from</span> <span class="string">'../../project.config.json'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>添加alias后写法：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'@/components/A'</span></span><br><span class="line"><span class="keyword">import</span> Utils <span class="keyword">from</span> <span class="string">'@/utils'</span></span><br><span class="line"><span class="keyword">import</span> packageJson <span class="keyword">from</span> <span class="string">'@/package'</span></span><br><span class="line"><span class="keyword">import</span> projectConfig <span class="keyword">from</span> <span class="string">'@/project'</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这里面的路径是可以根据需求自由配置的，@即为src，如果需要添加其他的目录，也可以按照这种方式来添加即可。至此，就可以使用别名来变相使用绝对路径了。</p>
+<blockquote>
+<p>建议别名使用 @/ 开头而非仅用 @ 开头，因为有小概率会与某些 scoped 形式的 npm 包（形如：@tarojs/taro, @babel/core）产生命名冲突。</p>
+</blockquote>
+<h2 id="VSCode配置">VSCode配置</h2>
+<p>需要在<code>jsconfig.json</code>,<code>tsconfig.json</code>中进行配置来让编辑器识别路径，并可以使用自动路径补全功能。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: {</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"."</span>,</span><br><span class="line">    <span class="attr">"paths"</span>: {</span><br><span class="line">      <span class="attr">"@/components/*"</span>: [<span class="string">"./src/components/*"</span>],</span><br><span class="line">      <span class="attr">"@/utils/*"</span>: [<span class="string">"./src/utils/*"</span>],</span><br><span class="line">      <span class="attr">"@/package"</span>: [<span class="string">"./package.json"</span>],</span><br><span class="line">      <span class="attr">"@/project"</span>: [<span class="string">"./project.config.json"</span>],</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>参考：</p>
 <ul>
-<li>DNS全称：Domain Name System</li>
-<li>浏览器 -&gt; DNS缓存 -&gt; DNS服务器</li>
-<li>dns-prefetch</li>
-</ul>
-<h2 id="资源请求流程">资源请求流程</h2>
-<ul>
-<li>浏览器 -&gt; 后端服务器</li>
-<li>Request-header + 参数(url body)</li>
-<li>status + Response-header + body</li>
-</ul>
-<h2 id="浏览器解析-理想环境">浏览器解析(理想环境)</h2>
-<ul>
-<li>DOM + JS执行(如出现JS，暂停DOM构建，先执行JS)</li>
-<li>构建渲染树</li>
-<li>布局(确定元素大小和位置)</li>
-<li>绘制</li>
+<li><a href="https://taro-docs.jd.com/taro/docs/config-detail/#alias">https://taro-docs.jd.com/taro/docs/config-detail/#alias</a></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -219,7 +213,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Frontend/" rel="tag">Frontend</a>
+                    <a class="has-link-grey -link" href="/tags/HTML5/" rel="tag">HTML5</a>
                 </div>
             </div>
         </div>
@@ -236,17 +230,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/frontend/css/html5-css-ji-chu-zhi-shi/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">HTML5 CSS 基础知识</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/android/an-zhuo-mian-shi-xiang-guan-zhi-shi-1/">
-                <span class="level-item">安卓面试相关知识-1</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/frontend/css/taro-shi-yong-tailwindcss-styled-components/">
+                <span class="level-item">Taro使用tailwindcss+styled-components</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -1229,7 +1216,7 @@
                 <!-- Logo 暂时禁用，有Logo再换上 -->
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="网络相关基础知识" height="28">
+                    <img src="/images/logo.svg" alt="Taro使用绝对路径引用" height="28">
                 
                 </a> -->
                 <p class="is-size-7">

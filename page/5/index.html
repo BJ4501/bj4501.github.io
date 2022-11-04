@@ -136,6 +136,61 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-15T08:08:19.000Z">2020-03-15</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1031 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/webpack-dev-server-pei-zhi-fan-che-ji-lu/">webpack-dev-server配置翻车记录</a>
+            
+        </h1>
+        <div class="content">
+            <p>在配置WebpackDevServer后，在开发的过程中，经常出现莫名其妙的内存溢出，最后经过多方排查，发现问题出在webpack的配置文件上。</p>
+<p><strong>错误的配置文件</strong></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//旧配置文件，现作废，原因见下面描述</span></span><br><span class="line">devServer: {</span><br><span class="line">    <span class="comment">//基础目录(可选)</span></span><br><span class="line">    <span class="comment">//contentBase: './',</span></span><br><span class="line">    <span class="comment">//如果需要被外部访问</span></span><br><span class="line">    host: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">    port: <span class="number">8989</span>,</span><br><span class="line">    <span class="comment">//只显示错误提示</span></span><br><span class="line">    stats: <span class="string">"errors-only"</span>,</span><br><span class="line">    <span class="comment">//静态资源路径</span></span><br><span class="line">    publicPath: <span class="string">"/dist/"</span>,</span><br><span class="line">    <span class="comment">//在devServer启动之前执行的方法</span></span><br><span class="line">    after: <span class="function"><span class="params">()</span> =&gt;</span> {</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Server Start!'</span>);</span><br><span class="line">    },</span><br><span class="line">    <span class="comment">//将默认 /dist/ 路径代理为 / 路径</span></span><br><span class="line">    proxy: {</span><br><span class="line">        <span class="string">'/'</span>: <span class="string">'http://0.0.0.0:8989/dist/'</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/webpack-dev-server-pei-zhi-fan-che-ji-lu/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-11T12:54:19.000Z">2020-03-11</time>
                 
                 <div class="level-item">
@@ -449,75 +504,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-30T09:20:53.000Z">2018-11-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1574 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/an-zhuo-mian-shi-xiang-guan-zhi-shi-1/">安卓面试相关知识-1</a>
-            
-        </h1>
-        <div class="content">
-            <h1>Service</h1>
-<ol>
-<li>service和线程的区别和场景
-<ul>
-<li>安卓线程（主线程-包括UI控件的绘制和事件响应，工作线程）</li>
-<li>一般的线程还可以执行一些耗时的异步操作，一般不要在主线程上做耗时操作，会导致ANR</li>
-<li>service运行在主线程中，系统进程托管</li>
-</ul>
-</li>
-<li>如何管理service生命周期
-<ul>
-<li>生命周期1：service会通过绑定服务，进行service和Activity之间的绑定</li>
-<li>生命周期2：直接去开启一个服务</li>
-<li>这两种生命周期不同。但是共同点是从OnCreate开始到OnDestory结束</li>
-</ul>
-</li>
-</ol>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/an-zhuo-mian-shi-xiang-guan-zhi-shi-1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -590,7 +576,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            40
+                            41
                         </p>
                     </a>
                 </div>
@@ -745,7 +731,7 @@
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">8</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/frontend/css/">
@@ -822,7 +808,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 13.33px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 13.33px;">HTML5</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -843,7 +829,7 @@
                     <span class="level-item">八月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1090,7 +1076,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1187,7 +1173,7 @@
                     <span class="level-item">八月 2022</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1434,7 +1420,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
