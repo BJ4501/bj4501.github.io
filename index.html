@@ -136,6 +136,123 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2023-04-03T06:15:59.000Z">2023-04-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 577 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/frontend/taro-duo-huan-jing-pei-zhi/">Taro多环境配置</a>
+            
+        </h1>
+        <div class="content">
+            <p>Taro项目在开发一定阶段后，就会面临环境部署的问题了，比如本地的开发环境，服务器的测试环境，如果每次打包都手动切换环境的话，实在是太不优雅了。<br>
+那么有没有什么办法，可以在打包的时候决定环境，并进行配置呢，答案是有的。</p>
+<p>Taro在配置项里，有一个参数<code>defineConstants</code>，这个参数与同名Webpack参数一样，是可以在编译打包的时候，配置一个或多个全局的变量，通过打包参数的判断来切换变量，这样就可以实现多环境多配置的切换了。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/frontend/taro-duo-huan-jing-pei-zhi/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-11-04T08:06:47.000Z">2022-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/java/javaweb/">JavaWeb</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 758 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/java/javaweb/springdatajpa-shi-yong-query-native-cha-xun-fan-hui-map-yu-dui-xiang-zhuan-huan/">SpringDataJPA使用@Query Native查询返回Map与对象转换</a>
+            
+        </h1>
+        <div class="content">
+            <p>在使用JPA来操作数据库时，在遇到复杂查询时(包括JOIN嵌套等)，需要使用到@Query来使用原生SQL或者Hibernate的HQL进行查询，Repository中编写如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 仅为演示样例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt; </span>{</span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"select * from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            countQuery = <span class="string">"select count(*) from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    Page&lt;Map&lt;String, Object&gt;&gt; findAllUserByGroupId(<span class="meta">@Param</span>(<span class="string">"gid"</span>) Integer groupId, Pageable pageable);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"select * from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            countQuery = <span class="string">"select count(*) from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    Page&lt;Object[]&gt; findAllUserByGroupId2(<span class="meta">@Param</span>(<span class="string">"gid"</span>) Integer groupId, Pageable pageable);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>@Query支持使用两种方式进行接收：</p>
+<ul>
+<li><code>Object[]</code>:<br>
+通过使用 <code>Object[0], Object[1]</code> 来获取结果字段值，需要手动将字段转换为对应的Bean字段，非常的不优雅。</li>
+<li><code>Map&lt;String, Object&gt;</code>:<br>
+Map中的Key为对应的数据库字段String名，Object为字段对应的值，通过使用Map.get(key)来获取对应字段的值，相比<code>Object[]</code>会优雅一些。</li>
+</ul>
+<p>那么有没有一种办法，可以将Map转换为对应的Object？</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/java/javaweb/springdatajpa-shi-yong-query-native-cha-xun-fan-hui-map-yu-dui-xiang-zhuan-huan/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2022-08-24T06:15:59.000Z">2022-08-24</time>
                 
                 <div class="level-item">
@@ -202,7 +319,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 965 个字)
+                    7 分钟 读完 (大约 1007 个字)
                 </span>
                 
                 
@@ -215,7 +332,10 @@
             
         </h1>
         <div class="content">
-            <p>在用Taro框架写小程序的时候，写组件样式的时候，总觉得全部写在css文件里，如果需要通过某个参数来调节不同的样式，那么就比较麻烦。</p>
+            <blockquote>
+<p>提示：如果需要使用Taro编写小程序而不是H5的话，此方案并不生效。可参考： <a href="https://docs.taro.zone/docs/css-in-js">https://docs.taro.zone/docs/css-in-js</a></p>
+</blockquote>
+<p>在用Taro框架写小程序的时候，写组件样式的时候，总觉得全部写在css文件里，如果需要通过某个参数来调节不同的样式，那么就比较麻烦。</p>
 <p>这时候就想到了styled-components，同时又由于上一个项目是使用tailwindcss来编写的样式，那么有没有办法可以使用styled-components的语法来写tailwind呢？</p>
 <p>搜索了一下NPM仓库，还真有，<code>tailwind-styled-components</code>可以实现这个功能，但是实现这个功能之前，需要在Taro中安装tailwind。</p>
         </div>
@@ -358,124 +478,6 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-09-10T06:26:54.000Z">2021-09-10</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1463 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/yi-ci-android-xiang-ce-de-kai-fa-ri-zhi-ji-lu-day1/">一次Android相册的开发日志记录 Day1</a>
-            
-        </h1>
-        <div class="content">
-            <p>我实在受够啦！！！！<br>
-这个市面上就没有简单好用的相册管理软件了么！！！<br>
-尝试了我能找到的市面上所有的相册管理软件，没有一个能完全做到我想的样子。<br>
-手机自带的相册软件+云同步确实可以在单个或同品牌手机内，完成我想要的需求，但是我手上的设备众多，每次更换设备不一定会使用原品牌，那么这就变得非常的麻烦了。</p>
-<p>我的需求实际相对简单:<br>
-1.相对可用的UI，比如三星相册，小米相册<br>
-2.照片存储在服务器上，本地只缓存缩略图，只有用到的时候展示全图。<br>
-3.支持文件夹管理，这个非常关键。并且对应在服务器的文件目录结构要一致。<br>
-4.支持隐藏显示部分相册，保护隐私。<br>
-5.支持文件夹-&gt;远程文件夹的定向同步(单向或双向)</p>
-<p>但是同时满足这些点的相册，或多或少都有些问题。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/yi-ci-android-xiang-ce-de-kai-fa-ri-zhi-ji-lu-day1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-05-20T03:14:54.000Z">2021-05-20</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 438 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-da-yin-ri-zhi-dao-wen-jian/">Android打印日志到文件</a>
-            
-        </h1>
-        <div class="content">
-            <p>项目遇到一个问题需要排查，由于是偶现的问题，所以需要打印特定的日志并保存下来，但是并不需要将所有的Log都保存下来，<br>
-那么就需要一个小工具来解决这个问题了。</p>
-<p>逻辑也很简单，当需要写入日志时，调用函数进行写入即可。简单封装下的代码如下，便于使用。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-da-yin-ri-zhi-dao-wen-jian/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -494,7 +496,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
         </ul>
     </nav>
@@ -544,7 +546,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            41
+                            43
                         </p>
                     </a>
                 </div>
@@ -568,7 +570,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -699,7 +701,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/frontend/css/">
@@ -723,7 +725,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/java/algorithm/">
@@ -747,7 +749,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/other/">
@@ -776,7 +778,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Taro/" style="font-size: 10px;">Taro</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -790,6 +792,28 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2022/08/">
@@ -1044,14 +1068,14 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1079,6 +1103,13 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1136,6 +1167,28 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2022/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2022</span>
@@ -1388,14 +1441,14 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1423,6 +1476,13 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1477,7 +1537,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 
                 </a> -->
                 <p class="is-size-7">
-                &copy; 2022 JmeowTechnology&nbsp;
+                &copy; 2023 JmeowTechnology&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

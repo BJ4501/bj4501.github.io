@@ -147,6 +147,68 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2022-11-04T08:06:47.000Z">2022-11-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/java/javaweb/">JavaWeb</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 758 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/java/javaweb/springdatajpa-shi-yong-query-native-cha-xun-fan-hui-map-yu-dui-xiang-zhuan-huan/">SpringDataJPA使用@Query Native查询返回Map与对象转换</a>
+            
+        </h1>
+        <div class="content">
+            <p>在使用JPA来操作数据库时，在遇到复杂查询时(包括JOIN嵌套等)，需要使用到@Query来使用原生SQL或者Hibernate的HQL进行查询，Repository中编写如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 仅为演示样例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt; </span>{</span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"select * from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            countQuery = <span class="string">"select count(*) from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    Page&lt;Map&lt;String, Object&gt;&gt; findAllUserByGroupId(<span class="meta">@Param</span>(<span class="string">"gid"</span>) Integer groupId, Pageable pageable);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"select * from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            countQuery = <span class="string">"select count(*) from user as u where u.group_id = :gid"</span>,</span><br><span class="line">            nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    Page&lt;Object[]&gt; findAllUserByGroupId2(<span class="meta">@Param</span>(<span class="string">"gid"</span>) Integer groupId, Pageable pageable);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>@Query支持使用两种方式进行接收：</p>
+<ul>
+<li><code>Object[]</code>:<br>
+通过使用 <code>Object[0], Object[1]</code> 来获取结果字段值，需要手动将字段转换为对应的Bean字段，非常的不优雅。</li>
+<li><code>Map&lt;String, Object&gt;</code>:<br>
+Map中的Key为对应的数据库字段String名，Object为字段对应的值，通过使用Map.get(key)来获取对应字段的值，相比<code>Object[]</code>会优雅一些。</li>
+</ul>
+<p>那么有没有一种办法，可以将Map转换为对应的Object？</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/java/javaweb/springdatajpa-shi-yong-query-native-cha-xun-fan-hui-map-yu-dui-xiang-zhuan-huan/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2021-05-08T07:59:47.000Z">2021-05-08</time>
                 
                 <div class="level-item">
@@ -443,64 +505,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-06T09:19:33.000Z">2018-11-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/java/basic/">Basic</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 426 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/java/basic/javabasic-threadlocal/">JavaBasic-ThreadLocal</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="ThreadLocal">ThreadLocal</h2>
-<ul>
-<li>ThreadLocal和线程同步机制都是为了解决多线程中相同变量的访问冲突问题。</li>
-<li>同步机制中，通过对象的锁机制保证同一时间只有一个线程访问变量。这个时候该变量是多个线程共享的。</li>
-<li>ThreadLocal中，会为每一个线程提供一个独立的变量副本，从而隔离了多个线程对数据的访问冲突。</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/java/basic/javabasic-threadlocal/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -565,7 +569,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            41
+                            43
                         </p>
                     </a>
                 </div>
@@ -589,7 +593,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -720,7 +724,7 @@
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/frontend/css/">
@@ -744,7 +748,7 @@
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/java/algorithm/">
@@ -768,7 +772,7 @@
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/other/">
@@ -797,7 +801,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Taro/" style="font-size: 10px;">Taro</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -811,6 +815,28 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2022/08/">
@@ -1065,14 +1091,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1100,6 +1126,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1157,6 +1190,28 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2022/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2022</span>
@@ -1409,14 +1464,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1444,6 +1499,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1498,7 +1560,7 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                &copy; 2022 JmeowTechnology&nbsp;
+                &copy; 2023 JmeowTechnology&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

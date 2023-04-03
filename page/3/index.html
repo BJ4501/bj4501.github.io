@@ -136,6 +136,123 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-11-02T09:06:57.000Z">2020-11-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    9 分钟 读完 (大约 1358 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-zhi-wen-shi-bie-gong-neng-de-jie-ru/">Android指纹识别功能的接入</a>
+            
+        </h1>
+        <div class="content">
+            <p>在指纹识别手机没有大规模普及之前，许多app提供了使用手势密码进行快速登录或解锁的功能。但是在指纹识别大规模普及的今天，安卓的许多app还是仅支持收拾密码登陆功能，一方面是出于安全性的考量，另一方面是出于对适配兼容的担忧。一但用户进行了Root的操作，那么指纹识别的结果将变得不可信。</p>
+<p>最近在寻找市面上常用的密码本软件的时候，发现大部分指纹密码软件支持通过生物识别解锁app。也许是指纹识别的兼容支持变好了？查阅资料发现，安卓对指纹识别的功能进行过封装，使用<code>FingerprintManagerCompat</code>可以轻松对指纹识别进行对接操作。身边8台不同品牌和版本的测试机，都可以正常的使用指纹验证功能。</p>
+<p>但是由于Android统一封装指纹功能是在Android6.0后才加入的，这里也只对6.0以上的版本进行指纹识别功能适配。</p>
+<p>那么来看一下指纹识别该如何去实现和接入吧。这里为了方便接入，讲指纹识别的全部功能，封装到了一个Dialog中，当打开次dialog时，就可以进行指纹识别了。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-zhi-wen-shi-bie-gong-neng-de-jie-ru/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-10-16T02:59:08.000Z">2020-10-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 分钟 读完 (大约 2624 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/jie-jue-edittext-zhong-inputfilter-yu-lian-xiang-ci-shu-ru-fa-chong-tu/">解决EditText中InputFilter与联想词输入法冲突</a>
+            
+        </h1>
+        <div class="content">
+            <p>这一天，产品提出了一个神奇的需求：用户姓名设置框限制，允许最多8个汉字或16个英文字母或数字。<br>
+简单来说就是长度限制最大为16个字符，一个汉字认为是两个字符。虽然其实跟用户解释一个汉字等于两个字符这件事情是很奇怪的，但是毕竟是需求，我们来实现一下吧。</p>
+<p>首先简单说一下要求:</p>
+<ul>
+<li>只允许输入数字汉字或英文字母</li>
+<li>输入限制为最大16字符</li>
+<li>汉字计为2字符，数字和英文计为1字符</li>
+<li>当输入超过16字符时(如拼音输入法一次性输入多个文字)，输入内容截取到最大部分</li>
+</ul>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/jie-jue-edittext-zhong-inputfilter-yu-lian-xiang-ci-shu-ru-fa-chong-tu/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-10-14T02:59:08.000Z">2020-10-14</time>
                 
                 <div class="level-item">
@@ -358,129 +475,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-06-11T07:16:42.000Z">2020-06-11</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 486 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/mpandroidchart-zi-ding-yi-zuo-biao-zhou-xian-shi-wei-zhi/">MPAndroidChart自定义坐标轴显示位置</a>
-            
-        </h1>
-        <div class="content">
-            <p>MPAndroidChart是一个非常强大的控件库，并且可定制性非常的强。但是在使用时，有一个需求是，<br>
-Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标轴的渲染方式进行定制了。</p>
-<p>首先创建一个类<code>YAxisRendererFix</code>继承自<code>YAxisRenderer</code>，内部会重写一个方法<br>
-<code>drawYLabels</code>，这就是对Y轴文字渲染的关键方法了，你看Canvas都给你了。</p>
-<p>介绍一下这四个参数：</p>
-<ul>
-<li>Canvas c: 画笔，通过canvas来绘制你的文字，在这里就可以定制文字绘制的位置了。</li>
-<li>float fixedPosition: X轴位置</li>
-<li>float[] positions: Y轴位置，由于是Y轴的文字，所以所有需要绘制的文字位置作为一个数组。</li>
-<li>float offset: setYOffset里面的那个偏移值，如果没设置就是0。</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/mpandroidchart-zi-ding-yi-zuo-biao-zhou-xian-shi-wei-zhi/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-30T07:16:42.000Z">2020-04-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 211 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-drawable-dong-hua-de-shi-xian/">Android Drawable动画的实现</a>
-            
-        </h1>
-        <div class="content">
-            <p>有一个需求，需要做一个简单的动画，UI讲动画每一帧的图片都交给了我，那么该如何去做呢？</p>
-<p>这里使用了<code>animation-list</code>来实现此功能，实现方式也很简单，在drawable下创建对应的xml文件即可。</p>
-<h3 id="创建动画Drawable">创建动画Drawable</h3>
-<p>相关参数介绍：</p>
-<ul>
-<li>oneshot: 动画是否只执行一次 true 只执行一次 false 循环播放动画</li>
-<li>android:duration: 动画每一张播放的长度，单位ms</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-drawable-dong-hua-de-shi-xian/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -503,7 +497,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
         </ul>
     </nav>
@@ -553,7 +547,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            41
+                            43
                         </p>
                     </a>
                 </div>
@@ -577,7 +571,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            14
+                            15
                         </p>
                     </a>
                 </div>
@@ -708,7 +702,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <span class="level-item">Frontend</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/frontend/css/">
@@ -732,7 +726,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <span class="level-item">Java</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/java/algorithm/">
@@ -756,7 +750,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <span class="level-item">JavaWeb</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li><li>
         <a class="level is-marginless" href="/categories/other/">
@@ -785,7 +779,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/CSS/" style="font-size: 12.5px;">CSS</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Frontend/" style="font-size: 12.5px;">Frontend</a> <a href="/tags/HTML5/" style="font-size: 15px;">HTML5</a> <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/Javascript/" style="font-size: 12.5px;">Javascript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Taro/" style="font-size: 10px;">Taro</a> <a href="/tags/ThreadLocal/" style="font-size: 10px;">ThreadLocal</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 10px;">日常</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
 </div>
     
@@ -799,6 +793,28 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2022/08/">
@@ -1053,14 +1069,14 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1088,6 +1104,13 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1145,6 +1168,28 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2022/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2022</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2022/08/">
                 <span class="level-start">
                     <span class="level-item">八月 2022</span>
@@ -1397,14 +1442,14 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/HTML5/">
                         <span class="tag">HTML5</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Java/">
                         <span class="tag">Java</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1432,6 +1477,13 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Socket/">
                         <span class="tag">Socket</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Taro/">
+                        <span class="tag">Taro</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1486,7 +1538,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 
                 </a> -->
                 <p class="is-size-7">
-                &copy; 2022 JmeowTechnology&nbsp;
+                &copy; 2023 JmeowTechnology&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
