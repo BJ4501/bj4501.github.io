@@ -146,6 +146,63 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-12-16T06:16:57.000Z">2020-12-16</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 982 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/androidstudio-sheng-cheng-mo-ban-dai-ma/">AndroidStudio生成模板代码</a>
+            
+        </h1>
+        <div class="content">
+            <p>由于我的项目是MVP分层架构的，其实分层架构本身是一个好事，结构清晰，代码的健壮性强，但是每次创建页面都需要生成四五个类，页面一多，就要重复非常多次，这样的效率太低了，那有没有什么办法可以一次性，将样板代码生成好呢？</p>
+<p>答案当然是有的，注意过么，每次我们通过AndroidStudio创建一个新Activity的时候，是会生成完整Activity模板代码的，那么我们是否可以自定义这个行为呢？</p>
+<p>可以的！方法如下：</p>
+<p>首先进入到AndroidStudio软件目录下<code>android-studio\plugins\android\lib\templates\activities\</code>,这里面可以看到很多熟悉的名字，这就是平时使用的模板的存放位置。</p>
+<p>在这里可以建立一个模板文件夹，举例为<code>MVPActivity</code>。也可以复制一个模板以此为基础修改。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/androidstudio-sheng-cheng-mo-ban-dai-ma/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-11-02T09:06:57.000Z">2020-11-02</time>
                 
                 <div class="level-item">
@@ -427,64 +484,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-07-30T09:09:36.000Z">2020-07-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 890 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/">Android实现截屏的两种方式</a>
-            
-        </h1>
-        <div class="content">
-            <p>一个需要截屏的需求，并且如果可以做到的话，需要截取用户的状态栏图象。</p>
-<h2 id="方法1-使用View的DrawCache来获取当前显示的内容">方法1  使用View的DrawCache来获取当前显示的内容</h2>
-<p>优点：方法简单。<br>
-缺点：无法截取到状态栏的内容，包括时间，电量，wifi，4G状态等。</p>
-<p>注意这里要使用<code>Bitmap.createBitmap</code>否则Bitmap可能会被回收造成崩溃。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">View rootView = activity.getWindow().getDecorView().getRootView();</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap drawingCache = Bitmap.createBitmap(rootView.getDrawingCache());</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br></pre></td></tr></tbody></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -553,7 +552,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            43
+                            44
                         </p>
                     </a>
                 </div>
@@ -711,7 +710,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -810,6 +809,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/04/">
@@ -1058,7 +1068,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1185,6 +1195,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2023/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2023</span>
@@ -1431,7 +1452,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1555,7 +1576,7 @@
                 
                 </a> -->
                 <p class="is-size-7">
-                &copy; 2023 JmeowTechnology&nbsp;
+                &copy; 2024 JmeowTechnology&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 

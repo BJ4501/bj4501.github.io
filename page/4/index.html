@@ -136,6 +136,64 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-07-30T09:09:36.000Z">2020-07-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 890 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/">Android实现截屏的两种方式</a>
+            
+        </h1>
+        <div class="content">
+            <p>一个需要截屏的需求，并且如果可以做到的话，需要截取用户的状态栏图象。</p>
+<h2 id="方法1-使用View的DrawCache来获取当前显示的内容">方法1  使用View的DrawCache来获取当前显示的内容</h2>
+<p>优点：方法简单。<br>
+缺点：无法截取到状态栏的内容，包括时间，电量，wifi，4G状态等。</p>
+<p>注意这里要使用<code>Bitmap.createBitmap</code>否则Bitmap可能会被回收造成崩溃。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">View rootView = activity.getWindow().getDecorView().getRootView();</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">Bitmap drawingCache = Bitmap.createBitmap(rootView.getDrawingCache());</span><br><span class="line">rootView.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-shi-xian-jie-ping-de-liang-chong-fang-shi/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-06-11T07:16:42.000Z">2020-06-11</time>
                 
                 <div class="level-item">
@@ -429,66 +487,6 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-07T02:46:38.000Z">2020-04-07</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    18 分钟 读完 (大约 2636 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-zi-ding-yi-loading-ti-shi-kuang/">Android自定义Loading提示框</a>
-            
-        </h1>
-        <div class="content">
-            <p>工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。</p>
-<h2 id="制作一个旋转的Loading控件">制作一个旋转的Loading控件</h2>
-<ul>
-<li>首先需要自定义View来承载动画</li>
-<li>创建LoadingView继承自View</li>
-<li>初始化画笔和图片资源</li>
-</ul>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{&nbsp;&nbsp;&nbsp;</span><br><span class="line">    paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    <span class="comment">//画笔 抗锯齿</span></span><br><span class="line">    paint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    <span class="comment">//图片资源</span></span><br><span class="line">    loadingPic = decodeResource(getResources(), R.drawable.ic_loading);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-zi-ding-yi-loading-ti-shi-kuang/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -563,7 +561,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            43
+                            44
                         </p>
                     </a>
                 </div>
@@ -721,7 +719,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">23</span>
+                <span class="level-item tag">24</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -820,6 +818,17 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/04/">
@@ -1068,7 +1077,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1195,6 +1204,17 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2023/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2023</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2023/04/">
                 <span class="level-start">
                     <span class="level-item">四月 2023</span>
@@ -1441,7 +1461,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">23</span>
+                        <span class="tag is-grey">24</span>
                     </a>
                 </div>
                 
@@ -1565,7 +1585,7 @@ Y坐标轴上的所有数值必须要在图标内部，那么就需要对Y坐标
                 
                 </a> -->
                 <p class="is-size-7">
-                &copy; 2023 JmeowTechnology&nbsp;
+                &copy; 2024 JmeowTechnology&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                 
