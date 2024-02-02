@@ -27,7 +27,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.png">
+<link rel="icon" href="/images/logo192.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -76,10 +76,10 @@
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
-            <!-- Logo 暂时禁用，有Logo再换上 -->
-            <!-- 
-                <img src="/images/logo.svg" alt="JmeowTechnology" height="28">
-             -->
+        
+            
+                <img src="/images/logo192.png" height="28">
+             
                 JmeowTechnology
             </a>
         </div>
@@ -139,6 +139,64 @@
         </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2024-02-02T01:38:05.000Z">2024-02-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 496 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-jie-qu-bu-ke-jian-de-view-bing-sheng-cheng-bitmap/">Android截取不可见的View并生成Bitmap</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近收到一个分享图需求，需要将当前页面进行截取后，生成一个Bitmap保存到相册或分享到微信/朋友圈。</p>
+<p>而分享时需要隐去页面上很多按钮和文字，如果直接使用DrawingCache在保存的时候用户会看到页面元素消失再显示，那么这样体验会很差，所以使用另一种方式来实现。</p>
+<ul>
+<li>截取可见View的方法</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">createBitmapFromView</span><span class="params">(View view)</span> </span>{</span><br><span class="line">    view.setDrawingCacheEnabled(<span class="keyword">true</span>);</span><br><span class="line">    view.buildDrawingCache(<span class="keyword">true</span>);</span><br><span class="line">    Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());</span><br><span class="line">    view.setDrawingCacheEnabled(<span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">return</span> bitmap;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-jie-qu-bu-ke-jian-de-view-bing-sheng-cheng-bitmap/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     
 <div class="card">
@@ -433,62 +491,6 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-05-13T10:29:32.000Z">2021-05-13</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    12 分钟 读完 (大约 1843 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-nei-cun-xie-lu-de-pai-cha/">Android内存泄露的排查</a>
-            
-        </h1>
-        <div class="content">
-            <p>在一次项目开发中，测试提到了一个问题，在详情数据页左右反复滑动多次，页面会越来越卡顿，加载速度也会越来越慢，需要我排查一下问题。<br>
-由于这个详情数据页面是一个Fragment，数据量特别大，并且嵌套在ViewPage中可以左右滑动，并且ViewPage的页数可以非常多。那么首先想到的问题是ViewPage + Fragment，Fragment没有被正确回收导致的。<br>
-首先来排查下Fragment的生成逻辑：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Fragment <span class="title">getFragment</span><span class="params">(Fragment fragment, <span class="keyword">int</span> currentPage)</span> </span>{</span><br><span class="line">    DemoFragment fragment = <span class="keyword">new</span> DemoFragment();</span><br><span class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</span><br><span class="line">    bundle.putInt(<span class="string">"page"</span>, currentPage);</span><br><span class="line">    fragment.setArguments(bundle);</span><br><span class="line">    <span class="keyword">return</span> fragment;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-nei-cun-xie-lu-de-pai-cha/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -505,9 +507,9 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
             
             <li><a class="pagination-link has-text-black-ter" href="/categories/android/page/2/">2</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/android/page/3/">3</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/android/page/4/">4</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/android/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -557,7 +559,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -715,7 +717,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">24</span>
+                <span class="level-item tag">25</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -814,6 +816,17 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2024/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/12/">
@@ -1073,7 +1086,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">24</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1200,6 +1213,17 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2024/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2023/12/">
                 <span class="level-start">
                     <span class="level-item">十二月 2023</span>
@@ -1457,7 +1481,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">24</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1577,7 +1601,7 @@ MediaStore记录了用户的各种类型的文件位置，并保存到数据库�
                 <!-- Logo 暂时禁用，有Logo再换上 -->
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="JmeowTechnology" height="28">
+                    <img src="/images/logo192.png" alt="JmeowTechnology" height="28">
                 
                 </a> -->
                 <p class="is-size-7">

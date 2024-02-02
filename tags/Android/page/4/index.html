@@ -27,7 +27,7 @@
 
 
 
-<link rel="icon" href="/images/favicon.png">
+<link rel="icon" href="/images/logo192.png">
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
@@ -76,10 +76,10 @@
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
-            <!-- Logo 暂时禁用，有Logo再换上 -->
-            <!-- 
-                <img src="/images/logo.svg" alt="JmeowTechnology" height="28">
-             -->
+        
+            
+                <img src="/images/logo192.png" height="28">
+             
                 JmeowTechnology
             </a>
         </div>
@@ -138,6 +138,66 @@
         </nav>
     </div>
 </div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-07T02:46:38.000Z">2020-04-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    18 分钟 读完 (大约 2636 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/android/android-zi-ding-yi-loading-ti-shi-kuang/">Android自定义Loading提示框</a>
+            
+        </h1>
+        <div class="content">
+            <p>工作需要一个自定义的Loading提示框，那么比起从网络上找第三方库修改，从零做一个Loading更能学到更多的知识，那么我们开始吧。</p>
+<h2 id="制作一个旋转的Loading控件">制作一个旋转的Loading控件</h2>
+<ul>
+<li>首先需要自定义View来承载动画</li>
+<li>创建LoadingView继承自View</li>
+<li>初始化画笔和图片资源</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>{&nbsp;&nbsp;&nbsp;</span><br><span class="line">    paint = <span class="keyword">new</span> Paint();</span><br><span class="line">    <span class="comment">//画笔 抗锯齿</span></span><br><span class="line">    paint.setFlags(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">    <span class="comment">//图片资源</span></span><br><span class="line">    loadingPic = decodeResource(getResources(), R.drawable.ic_loading);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/android/android-zi-ding-yi-loading-ti-shi-kuang/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
 
     
 <div class="card">
@@ -457,72 +517,6 @@
 
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-11-27T09:43:44.000Z">2017-11-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 245 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-bu-ju-xiang-guan/">Android布局相关</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="LinearLayout">LinearLayout</h2>
-<ul>
-<li>vertical 垂直排列</li>
-<li>horizontal 水平排列</li>
-<li>match_parent 控件的宽度或高度会填满其所在的父控件</li>
-<li>wrap_content 控件大小由内容决定</li>
-<li>gravity
-<ul>
-<li>android:gravity 可以不考虑当前布局的方向</li>
-<li>android:layout_gravity 需要考虑当前布局的方向</li>
-<li>center_horizontal|center_vertical 水平居中，竖直居中</li>
-</ul>
-</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-bu-ju-xiang-guan/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -530,7 +524,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/3/">上一页</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/tags/Android/page/5/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -542,6 +536,8 @@
             <li><a class="pagination-link has-text-black-ter" href="/tags/Android/page/3/">3</a></li>
             
             <li><a class="pagination-link is-current" href="/tags/Android/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/tags/Android/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -591,7 +587,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            44
+                            45
                         </p>
                     </a>
                 </div>
@@ -749,7 +745,7 @@
                 <span class="level-item">Android</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">24</span>
+                <span class="level-item tag">25</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/frontend/">
@@ -848,6 +844,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2024/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2023/12/">
@@ -1107,7 +1114,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">24</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1234,6 +1241,17 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2024/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2024</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2023/12/">
                 <span class="level-start">
                     <span class="level-item">十二月 2023</span>
@@ -1491,7 +1509,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Android/">
                         <span class="tag">Android</span>
-                        <span class="tag is-grey">24</span>
+                        <span class="tag is-grey">25</span>
                     </a>
                 </div>
                 
@@ -1611,7 +1629,7 @@
                 <!-- Logo 暂时禁用，有Logo再换上 -->
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="JmeowTechnology" height="28">
+                    <img src="/images/logo192.png" alt="JmeowTechnology" height="28">
                 
                 </a> -->
                 <p class="is-size-7">
