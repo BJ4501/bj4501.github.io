@@ -7,17 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>JmeowTechnology</title>
+<title>移除JS、TS文件注释 - JmeowTechnology</title>
 
 
-    <meta name="description" content="Furry | Code | Game Design">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JmeowTechnology">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;page&#x2F;3&#x2F;index.html">
+    <meta name="description" content="在某些特殊交付场景下，我们提交的代码可能需要清除掉开发中的注释，逐条移除显然不现实。 于是编写一个简单的Python脚本，来清除不必要的注释，并不追求移除全部注释，只移除大部分行尾行内注释。">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移除JS、TS文件注释">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;frontend&#x2F;yi-chu-js-ts-wen-jian-zhu-shi&#x2F;index.html">
 <meta property="og:site_name" content="JmeowTechnology">
-<meta property="og:description" content="Furry | Code | Game Design">
+<meta property="og:description" content="在某些特殊交付场景下，我们提交的代码可能需要清除掉开发中的注释，逐条移除显然不现实。 于是编写一个简单的Python脚本，来清除不必要的注释，并不追求移除全部注释，只移除大部分行尾行内注释。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2024-02-20T08:56:29.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.jmeow.org&#x2F;images&#x2F;og_image.png">
 
@@ -129,52 +131,76 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-05-08T07:59:47.000Z">2021-05-08</time>
+                <time class="level-item has-text-grey" datetime="2023-12-29T06:48:00.000Z">2023-12-29</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/java/javaweb/">JavaWeb</a>
+                <a class="has-link-grey -link" href="/categories/frontend/">Frontend</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1133 个字)
+                    3 分钟 读完 (大约 384 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/java/javaweb/ji-yi-ci-sheng-chan-huan-jing-shang-xian-de-jing-li/">记一次生产环境上线的经历</a>
+                移除JS、TS文件注释
             
         </h1>
         <div class="content">
-            <p>最近写了一个项目，也是两三年没写后端的我再次尝试后端项目，在开发和部署的过程中，都遇到了许多奇奇怪怪的问题，<br>
-记录下来，也算是对这段时间惊心动魄经历的一次总结吧。</p>
-<h2 id="K8s容器内部时间错误">K8s容器内部时间错误</h2>
-<p>项目上线后，是使用Docker+K8s进行运维和部署的，但是测试环境是普通ECS主机。测试环境一切正常，<br>
-但是在生产环境出现了订单时间出现了错误，起初是认为自己项目时间没有做"UTC+8"处理，或者是mysql连接时<br>
-未指定时区。不过这两点检查之后，都没有问题。最后把目光放到了容器里。</p>
+            <p>在某些特殊交付场景下，我们提交的代码可能需要清除掉开发中的注释，逐条移除显然不现实。<br>
+于是编写一个简单的Python脚本，来清除不必要的注释，并不追求移除全部注释，只移除大部分行尾行内注释。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_comments_from_file</span><span class="params">(file_path)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(file_path, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">        lines = file.readlines()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(file_path, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">        <span class="keyword">for</span> line_number, line <span class="keyword">in</span> enumerate(lines, start=<span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 如果当前行包含http，则不移除注释</span></span><br><span class="line">            <span class="keyword">if</span> <span class="string">'http'</span> <span class="keyword">in</span> line:</span><br><span class="line">                file.write(line)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 移除行尾的注释</span></span><br><span class="line">                line = re.sub(<span class="string">r'//.*'</span>, <span class="string">''</span>, line)</span><br><span class="line">                <span class="comment"># 移除行内的注释</span></span><br><span class="line">                line = re.sub(<span class="string">r'/\*.*?\*/'</span>, <span class="string">''</span>, line)</span><br><span class="line">                file.write(line)</span><br><span class="line">                <span class="comment"># 输出已处理的行数</span></span><br><span class="line">                print(<span class="string">f'Removed comments from line <span class="subst">{line_number}</span> in file <span class="subst">{file_path}</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">remove_comments_from_folder</span><span class="params">(folder_path)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(folder_path):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> file.endswith(<span class="string">'.ts'</span>) <span class="keyword">or</span> file.endswith(<span class="string">'.tsx'</span>):  <span class="comment"># 修改条件，同时处理.ts和.tsx文件，js项目则为 js、jsx</span></span><br><span class="line">                file_path = os.path.join(root, file)</span><br><span class="line">                remove_comments_from_file(file_path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里的文件夹路径更改为你要移除注释工程的具体路径</span></span><br><span class="line">folder_path = <span class="string">'/path/project_folder'</span></span><br><span class="line">remove_comments_from_folder(folder_path)</span><br><span class="line">print(<span class="string">'Comment removal process completed.'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>保存并执行这段py脚本即可。移除后记得编译一下看看哪里是否存在错误移除导致编译失败。可按需求调整移除内容，修改代码。</p>
+<p>PS: 希望所有人都用不到这种特殊场景的脚本代码。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/java/javaweb/ji-yi-ci-sheng-chan-huan-jing-shang-xian-de-jing-li/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/TypeScript/" rel="tag">TypeScript</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -184,320 +210,28 @@
 
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-04-15T08:03:37.000Z">2021-04-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/java/">Java</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1052 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/java/java-guan-yu-shi-jian-cao-zuo-zheng-li/">Java关于时间操作整理</a>
-            
-        </h1>
-        <div class="content">
-            <p>由于最近的项目中，经常需要对时间进行操作和计算，每次搜索出的计算方式都不一样，为了保证代码的统一性，还是仔细的看一下，java的时间和相关处理类，到底都有什么吧。</p>
-<h2 id="Date-java-util-date">Date (java.util.date)</h2>
-<p>Date类的大部分方法都被标记为Deprecated过时方法。在java1.8之后，增加了新的时间处理类(java.time)。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/java/java-guan-yu-shi-jian-cao-zuo-zheng-li/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-12-16T06:16:57.000Z">2020-12-16</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 982 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/androidstudio-sheng-cheng-mo-ban-dai-ma/">AndroidStudio生成模板代码</a>
-            
-        </h1>
-        <div class="content">
-            <p>由于我的项目是MVP分层架构的，其实分层架构本身是一个好事，结构清晰，代码的健壮性强，但是每次创建页面都需要生成四五个类，页面一多，就要重复非常多次，这样的效率太低了，那有没有什么办法可以一次性，将样板代码生成好呢？</p>
-<p>答案当然是有的，注意过么，每次我们通过AndroidStudio创建一个新Activity的时候，是会生成完整Activity模板代码的，那么我们是否可以自定义这个行为呢？</p>
-<p>可以的！方法如下：</p>
-<p>首先进入到AndroidStudio软件目录下<code>android-studio\plugins\android\lib\templates\activities\</code>,这里面可以看到很多熟悉的名字，这就是平时使用的模板的存放位置。</p>
-<p>在这里可以建立一个模板文件夹，举例为<code>MVPActivity</code>。也可以复制一个模板以此为基础修改。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/androidstudio-sheng-cheng-mo-ban-dai-ma/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-11-02T09:06:57.000Z">2020-11-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1358 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/android-zhi-wen-shi-bie-gong-neng-de-jie-ru/">Android指纹识别功能的接入</a>
-            
-        </h1>
-        <div class="content">
-            <p>在指纹识别手机没有大规模普及之前，许多app提供了使用手势密码进行快速登录或解锁的功能。但是在指纹识别大规模普及的今天，安卓的许多app还是仅支持收拾密码登陆功能，一方面是出于安全性的考量，另一方面是出于对适配兼容的担忧。一但用户进行了Root的操作，那么指纹识别的结果将变得不可信。</p>
-<p>最近在寻找市面上常用的密码本软件的时候，发现大部分指纹密码软件支持通过生物识别解锁app。也许是指纹识别的兼容支持变好了？查阅资料发现，安卓对指纹识别的功能进行过封装，使用<code>FingerprintManagerCompat</code>可以轻松对指纹识别进行对接操作。身边8台不同品牌和版本的测试机，都可以正常的使用指纹验证功能。</p>
-<p>但是由于Android统一封装指纹功能是在Android6.0后才加入的，这里也只对6.0以上的版本进行指纹识别功能适配。</p>
-<p>那么来看一下指纹识别该如何去实现和接入吧。这里为了方便接入，讲指纹识别的全部功能，封装到了一个Dialog中，当打开次dialog时，就可以进行指纹识别了。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/android-zhi-wen-shi-bie-gong-neng-de-jie-ru/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-10-16T02:59:08.000Z">2020-10-16</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    17 分钟 读完 (大约 2624 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/jie-jue-edittext-zhong-inputfilter-yu-lian-xiang-ci-shu-ru-fa-chong-tu/">解决EditText中InputFilter与联想词输入法冲突</a>
-            
-        </h1>
-        <div class="content">
-            <p>这一天，产品提出了一个神奇的需求：用户姓名设置框限制，允许最多8个汉字或16个英文字母或数字。<br>
-简单来说就是长度限制最大为16个字符，一个汉字认为是两个字符。虽然其实跟用户解释一个汉字等于两个字符这件事情是很奇怪的，但是毕竟是需求，我们来实现一下吧。</p>
-<p>首先简单说一下要求:</p>
-<ul>
-<li>只允许输入数字汉字或英文字母</li>
-<li>输入限制为最大16字符</li>
-<li>汉字计为2字符，数字和英文计为1字符</li>
-<li>当输入超过16字符时(如拼音输入法一次性输入多个文字)，输入内容截取到最大部分</li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/jie-jue-edittext-zhong-inputfilter-yu-lian-xiang-ci-shu-ru-fa-chong-tu/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-10-14T02:59:08.000Z">2020-10-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/android/">Android</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 分钟 读完 (大约 295 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/android/duo-edittext-ye-mian-ru-he-qing-chu-shu-ru-jiao-dian/">多EditText页面如何清除输入焦点</a>
-            
-        </h1>
-        <div class="content">
-            <p>开发中，如果需要清空EditText的输入焦点，一般情况下都需要使用<code>EditText.clearFocus()</code>。<br>
-但在当一个页面中有多个EditText输入框时，<code>clearFocus</code>有时却无效，清空焦点之后，焦点会重新回到第一个EditText。<br>
-那么是不是说明clearFocus在多EditText情况下无效呢？</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/android/duo-edittext-ye-mian-ru-he-qing-chu-shu-ru-jiao-dian/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/page/2/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/android/android-jie-qu-bu-ke-jian-de-view-bing-sheng-cheng-bitmap/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Android截取不可见的View并生成Bitmap</span>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/page/4/">下一页</a>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/android/chu-li-recyclerview-gun-dong-yu-dian-ji-shi-jian-ru-pao-ma-deng/">
+                <span class="level-item">处理RecyclerView滚动与点击事件(如:跑马灯)</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
-            
-            <li><a class="pagination-link is-current" href="/page/3/">3</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
-            
-            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
 </div>
+
+
 </div>
                 
 
@@ -1599,7 +1333,7 @@
                 <!-- Logo 暂时禁用，有Logo再换上 -->
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo192.png" alt="JmeowTechnology" height="28">
+                    <img src="/images/logo192.png" alt="移除JS、TS文件注释" height="28">
                 
                 </a> -->
                 <p class="is-size-7">
